@@ -23,6 +23,12 @@ block content
         - var destination = "กทม"
         - var rateMoney = 2000
         - var describe = "ไม่มี"
+        - var goods = "ข้าว"
+        - var weigth = 50
+        - var dateOfAnnounce = "23/10/2020 | 13:20"
         - for (var x = 0; x < 3; x++)
             include ../work/work-card
+        #loader.d-flex.justify-content-center
+            .spinner-border.text-primary(role='status').text-center
+                span.sr-only Loading...
 

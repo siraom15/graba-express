@@ -6,28 +6,45 @@
                     img(src=imgSrc, alt="" srcset="" height="40px").ml-3.rounded-circle
                     h5= driverName
                 #contact
+                    p= dateOfAnnounce
                     p
                         a(href="http://") 
                             | ติดต่องาน 
                             i.fas.fa-phone
             .card-body
+                //เส้นทาง
                 .row
                     .col.d-flex
-                        h5 
-                            i.fas.fa-location-arrow
-                        p=  start 
+                        h5.m-2 
+                            i.fas.fa-location-arrow.text-danger
+                        p.m-2= start 
                             i.fas.fa-arrow-right
-                        =  destination
+                            = destination
+                //สินค้า
                 .row
                     .col.d-flex
-                        h5
-                            i.fas.fa-money-bill-wave-alt
-                        p.ml-1= rateMoney
+                        h5.m-2
+                            i.fas.fa-shopping-cart.text-warning
+                        p.m-2= goods
+                //น้ำหนักสินค้า
+                .row
+                    .col.d-flex
+                        h5.m-2
+                            i.fas.fa-weight 
+                        p.m-2= weigth
+                            |  กิโลกรัม
+                //เรทราคา
+                .row
+                    .col.d-flex
+                        h5.m-2
+                            i.fas.fa-money-bill-wave-alt.text-success
+                        p.m-2= rateMoney
                             |  บาท
+                //
                 .row
                     .col.d-flex
-                        h5
-                            i.fas.fa-info-circle
-                        p.ml-1= describe
-            a(href="/work/info/1").card-footer.text-center
+                        h5.m-2
+                            i.fas.fa-info-circle.text-primary
+                        p.m-2= describe
+            a(href="/work/info/1").card-footer.text-center.text-white.text-underline.bg-primary
                 | ดูข้อมูลเพิ่มเติม

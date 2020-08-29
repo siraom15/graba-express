@@ -1,17 +1,57 @@
 extends ../layout
 block content
-    - var start = "/images/c.jpg"
+    - var imgSrc = "/images/c.jpg"
     - var driverName = "นายเอบี นอมอล"
+    - var start = "กรุงเทพ"
+    - var destination = "นครปฐม"
+    - var rateMoney = 2000
+    - var goods = "ข้าว"
+    - var weigth = 50
+    - var dateOfAnnounce = "23/10/2020"
     .container-fluid
         a(href="/work").text-dark
             i.fas.fa-arrow-left
             |  ย้อนกลับ
         .card.shadow-lg
             .card-header.d-flex
-                img(src=start, alt="" srcset="" height="40px").rounded-circle
+                img(src=imgSrc, alt="" srcset="" height="40px").rounded-circle
                 p.text-inline= driverName
             .card-body
+                //เส้นทาง
                 .row
-                    .col-6
+                    .col.d-flex
+                        h5.m-2
+                            i.fas.fa-location-arrow.text-danger
+                        p=  start 
+                            i.fas.fa-arrow-right
+                        =  destination
+                //สินค้า
+                .row
+                    .col.d-flex
+                        h5.m-2
+                            i.fas.fa-shopping-cart.text-warning
+                        p= goods
+                //น้ำหนักสินค้า
+                .row
+                    .col.d-flex
+                        h5.m-2
+                            i.fas.fa-weight 
+                        p= weigth
+                            |  กิโลกรัม
+                //เรทราคา
+                .row
+                    .col.d-flex
+                        h5.m-2
+                            i.fas.fa-money-bill-wave-alt.text-success
+                        p.ml-1= rateMoney
+                            |  บาท
+                //
+                .row
+                    .col.d-flex
+                        h5.m-2
+                            i.fas.fa-info-circle.text-primary
+                        p.ml-1= describe
 
+            a(href="/work/info/1").card-footer.text-center
+                | ติดต่อผู้ประกาศ
 

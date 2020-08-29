@@ -1,4 +1,4 @@
-.bg {
+.nousebg {
     background-image: url("/images/bg3.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -6,4 +6,49 @@
 }
 .font-kanit {
     font-family: 'Kanit', sans-serif;
+}
+.text-underline{
+    text-decoration: underline;
+}
+html {
+   
+}
+.bg{
+    background-color: rgb(50, 95, 175);
+    height: 50%;
+}
+.bg-pretty{
+    /* background-image: linear-gradient(to bottom right, red, yellow); */
+    /* background: url(); */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url("/images/bg3.jpg");
+    opacity: 1;
+}
+.centered-25 {
+    margin: 0;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+.centered-50 {
+    margin: 0;
+    /* position: absolute; */
+    top: 50%;
+    left: 50%;
+    margin-left: 50%;
+    /* margin-right: 25%; */
+    transform: translate(-50%, -50%)
+}
+.bg-trans {
+    opacity: .9;
+    background: black;
+}
+.vr {
+    width:10px;
+    background-color:#000;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:150px;
 }
