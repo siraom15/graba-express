@@ -1,0 +1,9 @@
+.bg {
+    background-image: url("/images/bg3.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    /* opacity: 0.3; */
+}
+.font-kanit {
+    font-family: 'Kanit', sans-serif;
+}

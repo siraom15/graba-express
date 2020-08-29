@@ -1,0 +1,33 @@
+.row.mb-2
+    .col-12
+        .card
+            .card-header.d-flex.justify-content-between
+                #user.media
+                    img(src=imgSrc, alt="" srcset="" height="40px").ml-3.rounded-circle
+                    h5= driverName
+                #contact
+                    p
+                        a(href="http://") 
+                            | ติดต่องาน 
+                            i.fas.fa-phone
+            .card-body
+                .row
+                    .col.d-flex
+                        h5 
+                            i.fas.fa-location-arrow
+                        p=  start 
+                            i.fas.fa-arrow-right
+                        =  destination
+                .row
+                    .col.d-flex
+                        h5
+                            i.fas.fa-money-bill-wave-alt
+                        p.ml-1= rateMoney
+                            |  บาท
+                .row
+                    .col.d-flex
+                        h5
+                            i.fas.fa-info-circle
+                        p.ml-1= describe
+            a(href="/work/info/1").card-footer.text-center
+                | ดูข้อมูลเพิ่มเติม

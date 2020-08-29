@@ -1,0 +1,17 @@
+extends ../layout
+block content
+    - var start = "/images/c.jpg"
+    - var driverName = "นายเอบี นอมอล"
+    .container-fluid
+        a(href="/work").text-dark
+            i.fas.fa-arrow-left
+            |  ย้อนกลับ
+        .card.shadow-lg
+            .card-header.d-flex
+                img(src=start, alt="" srcset="" height="40px").rounded-circle
+                p.text-inline= driverName
+            .card-body
+                .row
+                    .col-6
+
+
