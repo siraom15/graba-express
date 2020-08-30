@@ -5,13 +5,13 @@ block content
   .container-fluid.p-0.bg-pretty#bg-half
     .centered-25.text-white
       .typewriter.text-center
-        h1 ยินดีต้อนรับเข้าสู่ กระบะ Express
-        #demo
+          h1 กระบะ Express
+          #demo
       .d-flex.justify-content-center
         .btn.btn-lg.btn-danger.rounded-0.m-2
           i.fas.fa-check-circle 
           |  รับงาน
-        .btn.btn-lg.btn-outline-danger.rounded-0.m-2.text-white.border-white
+        .btn.btn-lg.btn-outline-light.rounded-0.m-2
           i.fas.fa-search 
           |  ประกาศหางาน
   //ข้อดี
@@ -28,27 +28,52 @@ block content
             .h1.text-center
               i.fas.fa-bullhorn
             .h5.text-center ประกาศสะดวก
-
+  //คืออะไร
   .row.d-flex.justify-content-center
     .col-8
       .card.shadow-lg
         .card-body.text-center
-          .h3.text ขั้นตอนการใช้งาน
+          .h3.text กระบะ Express คืออะไร ?
           ul#pills-tab.nav.nav-pills.mb-3(role='tablist').d-flex.justify-content-center
             li.nav-item
-              a#pills-driver-tab.nav-link.active(data-toggle='pill' href='#pills-driver' role='tab' aria-controls='pills-driver' aria-selected='true') สำหรับผู้ขับ
+              a#pills-driver-tab.nav-link.active(data-toggle='pill' href='#pills-driver' role='tab' aria-controls='pills-driver' aria-selected='true') 
+                | สำหรับผู้ขับ
             li.nav-item
-              a#pills-dealer-tab.nav-link(data-toggle='pill' href='#pills-dealer' role='tab' aria-controls='pills-dealer' aria-selected='false') สำหรับผู้จ้าง
+              a#pills-dealer-tab.nav-link(data-toggle='pill' href='#pills-dealer' role='tab' aria-controls='pills-dealer' aria-selected='false')
+                | สำหรับผู้จ้าง
           #pills-tabContent.tab-content
-            #pills-driver.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='pills-home-tab') Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, modi beatae. Illum quis veniam labore suscipit eum culpa vel libero autem numquam, odit consequatur doloremque officiis necessitatibus ab dolorem quas! Lorem ipsum, dolor sit amet consectetur adipisicing elit. In molestiae accusantium placeat modi praesentium id officiis necessitatibus. Magni nam similique eveniet cum adipisci veritatis omnis optio? Officiis beatae culpa vel! lo
-            #pills-dealer.tab-pane.fade(role='tabpanel' aria-labelledby='pills-dealer-tab') เร็วๆ นี้
+            #pills-driver.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='pills-home-tab')
+              p
+                | กระบะ Express สำหรับผู้ขับ คือเว็บไซต์ที่รวบรวมงานจ้างจาก พ่อค้า/แม่ค้า ที่ต้องการหารถกระบะเพื่อบรรทุกสินค้า 
+            #pills-dealer.tab-pane.fade(role='tabpanel' aria-labelledby='pills-dealer-tab')
+              p
+                | กระบะ Express สำหรับผู้ประกาศ คือเว็บไซต์ที่ใช้ประกาศหาคนขับรถกระบะเพื่อบรรทุกสินค้าไปยังจุดหมายปลายทาง
+            
 
-    //- hr
-    //- .row.text-center
-      .col
-        h4 สำหรับผู้ขับ
-      .col
-        h4 สำหรับผู้จ้าง
+  //- .row.mt-5
+    main.warpper
+      br
+      //- section.section.static
+      section.section.parallax.bg1
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae est saepe ad vel minima? Exercitationem fuga voluptates earum optio suscipit dolorum illo molestiae! Vero rem perferendis maiores assumenda iste commodi.
+
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto voluptas delectus vel earum a nisi ut, illo, ullam numquam recusandae ipsa iste, exercitationem porro similique. Alias dolorem error ratione aspernatur.
+
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda consequatur dicta, cumque architecto eum itaque unde minima tempore reprehenderit, at maxime iste corrupti quasi nemo voluptates, optio nam amet.
+      //- section.section.static
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae est saepe ad vel minima? Exercitationem fuga voluptates earum optio suscipit dolorum illo molestiae! Vero rem perferendis maiores assumenda iste commodi.
+
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto voluptas delectus vel earum a nisi ut, illo, ullam numquam recusandae ipsa iste, exercitationem porro similique. Alias dolorem error ratione aspernatur.
+
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda consequatur dicta, cumque architecto eum itaque unde minima tempore reprehenderit, at maxime iste corrupti quasi nemo voluptates, optio nam amet.
+      
+      //- section.section.parallax.bg2
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae est saepe ad vel minima? Exercitationem fuga voluptates earum optio suscipit dolorum illo molestiae! Vero rem perferendis maiores assumenda iste commodi.
+
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto voluptas delectus vel earum a nisi ut, illo, ullam numquam recusandae ipsa iste, exercitationem porro similique. Alias dolorem error ratione aspernatur.
+
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda consequatur dicta, cumque architecto eum itaque unde minima tempore reprehenderit, at maxime iste corrupti quasi nemo voluptates, optio nam amet.
+      
   script(src="/javascripts/typing.js")
 
 
