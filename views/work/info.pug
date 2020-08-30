@@ -8,7 +8,10 @@ block content
     - var goods = "ข้าว"
     - var weigth = 50
     - var dateOfAnnounce = "23/10/2020"
-    .container-fluid
+    - var dateOfOrder = "วันอังคาร ที่ 13 สิงหาคม";
+    - var describe = "รับงานด่วนๆๆๆ"
+    .container-fluid.mt-5
+        hr
         a(href="/work").text-dark
             i.fas.fa-arrow-left
             |  ย้อนกลับ
@@ -16,7 +19,7 @@ block content
             .card-header.d-flex
                 img(src=imgSrc, alt="" srcset="" height="40px").rounded-circle
                 p.text-inline= driverName
-            .card-body
+            //- .card-body
                 //เส้นทาง
                 .row
                     .col.d-flex
@@ -51,7 +54,48 @@ block content
                         h5.m-2
                             i.fas.fa-info-circle.text-primary
                         p.ml-1= describe
+            .card-body
+                //เส้นทาง
+                .row
+                    .col.d-flex
+                        h5.m-2 
+                            i.fas.fa-location-arrow.text-danger
+                        p.m-2= start 
+                            i.fas.fa-arrow-right
+                            = destination
+                //สินค้า
+                .row
+                    .col.d-flex
+                        h5.m-2
+                            i.fas.fa-shopping-cart.text-warning
+                        p.m-2= goods
+                //น้ำหนักสินค้า
+                .row
+                    .col.d-flex
+                        h5.m-2
+                            i.fas.fa-weight 
+                        p.m-2= weigth
+                            |  กิโลกรัม
+                //เรทราคา
+                .row
+                    .col.d-flex
+                        h5.m-2
+                            i.fas.fa-money-bill-wave-alt.text-success
+                        p.m-2= rateMoney
+                            |  บาท
+                .row 
+                    .col.d-flex
+                        h5.m-2
+                            i.fas.fa-calendar-day.text-pink
+                        p.m-2= dateOfOrder
 
+                //
+                .row
+                    .col.d-flex
+                        h5.m-2
+                            i.fas.fa-info-circle.text-primary
+                        p.m-2= describe
+            
             a(href="/work/info/1").card-footer.text-center
                 | ติดต่อผู้ประกาศ
 

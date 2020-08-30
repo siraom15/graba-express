@@ -1,3 +1,6 @@
+.text-pink{
+    color:pink;
+}
 .nousebg {
     background-image: url("/images/bg3.jpg");
     background-attachment: fixed;
@@ -81,7 +84,7 @@
     bottom: 0;
     left: 0;
     transform: translateZ(-1px) scale(1.5);
-    /* background-size: 100%; */
+    background-size: 100%;
     z-index: -1;
 }
 .static {
@@ -102,4 +105,12 @@ background-image: url('/images/bg3.jpg');
 background-attachment: fixed;
 background-position: center;
 background-repeat: no-repeat;
+}
+
+.bg-black{
+    background-color: black;
+}
+
+.text-shadow{
+    text-shadow: 1px 1px black;
 }

@@ -1,18 +1,21 @@
 extends ../layout
 
 block content
-    .container-fluid
-        .h1 งานที่ประกาศทั้งหมด
+    .container-fluid.mt-5
+        //- .h1 งานที่ประกาศทั้งหมด
         hr
+        h4 ค้นหางานสำหรับผู้ขับรถ
         .form-group.row
             .col-5
+                label(for="") เริ่มต้น
                 select#orderBy(name="").form-control
                     option(value="" default=true) -
                     for i in province_data
                         option(value=i  default=true)= i
             .col-2.form-inline.d-flex.justify-content-center
                 i.fas.fa-arrow-right.text-dark
-            .col-5    
+            .col-5
+                label(for="") จุดหมาย    
                 select#orderBy(name="").form-control
                     option(value="" default=true) -
                     for i in province_data
@@ -30,5 +33,5 @@ block content
             include ../work/work-card
         #loader.d-flex.justify-content-center
             .spinner-border.text-primary(role='status').text-center
-                span.sr-only Loading...
+                span.sr-only กำลังโหลด
 
