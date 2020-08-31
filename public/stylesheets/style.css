@@ -55,9 +55,14 @@
     bottom:0;
     left:150px;
 }
-.scrolled{
+.scrolled-dark{
     opacity: .8;
     background: black !important;
+    transition: background-color 200ms linear;
+}
+.scrolled-white{
+    opacity: .8;
+    background: white !important;
     transition: background-color 200ms linear;
 }
 .wrapper {

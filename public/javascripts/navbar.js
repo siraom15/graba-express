@@ -1,6 +1,7 @@
 $(function () {
     $(document).scroll(function () {
-      var $nav = $(".fixed-top");
-      $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+      var navbar = $(".fixed-top");
+      navbar.toggleClass('scrolled-dark', $(this).scrollTop() > navbar.height());
+      navbar.toggleClass('navbar-dark', $(this).scrollTop() > navbar.height());
     });
   });
