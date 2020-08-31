@@ -1,4 +1,6 @@
 extends ../layout
+block navbar
+    include ../component/navbar/navbar-other
 block content
     - var imgSrc = "/images/c.jpg"
     - var driverName = "นายเอบี นอมอล"
@@ -10,50 +12,14 @@ block content
     - var dateOfAnnounce = "23/10/2020"
     - var dateOfOrder = "วันอังคาร ที่ 13 สิงหาคม";
     - var describe = "รับงานด่วนๆๆๆ"
-    .container-fluid.mt-5
-        hr
-        a(href="/work").text-dark
+    .container-fluid.mt-5.p-5
+        a(href="/work").text-dark.mt-5
             i.fas.fa-arrow-left
             |  ย้อนกลับ
         .card.shadow-lg
             .card-header.d-flex
                 img(src=imgSrc, alt="" srcset="" height="40px").rounded-circle
                 p.text-inline= driverName
-            //- .card-body
-                //เส้นทาง
-                .row
-                    .col.d-flex
-                        h5.m-2
-                            i.fas.fa-location-arrow.text-danger
-                        p=  start 
-                            i.fas.fa-arrow-right
-                        =  destination
-                //สินค้า
-                .row
-                    .col.d-flex
-                        h5.m-2
-                            i.fas.fa-shopping-cart.text-warning
-                        p= goods
-                //น้ำหนักสินค้า
-                .row
-                    .col.d-flex
-                        h5.m-2
-                            i.fas.fa-weight 
-                        p= weigth
-                            |  กิโลกรัม
-                //เรทราคา
-                .row
-                    .col.d-flex
-                        h5.m-2
-                            i.fas.fa-money-bill-wave-alt.text-success
-                        p.ml-1= rateMoney
-                            |  บาท
-                //
-                .row
-                    .col.d-flex
-                        h5.m-2
-                            i.fas.fa-info-circle.text-primary
-                        p.ml-1= describe
             .card-body
                 //เส้นทาง
                 .row
