@@ -94,23 +94,30 @@
     background-repeat: no-repeat;
   }
 .bg1::after {
-background-image: url('/images/bg3.jpg');
-background-attachment: fixed;
-background-position: center;
-background-repeat: no-repeat;
+    background-image: url('/images/bg3.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .bg2::after {
-background-image: url('/images/bg3.jpg');
-background-attachment: fixed;
-background-position: center;
-background-repeat: no-repeat;
+    background-image: url('/images/bg3.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-
+.bg-3{
+    background-image: url('/images/bg3.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 .bg-black{
     background-color: black;
 }
-
+.bg-orange{
+    background-color: orange !important;
+}
 .text-shadow{
     text-shadow: 1px 1px black;
 }
