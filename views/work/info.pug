@@ -1,4 +1,6 @@
 extends ../layout
+block navbar
+    include ../component/navbar/navbar-other
 block content
     - var imgSrc = "/images/c.jpg"
     - var driverName = "นายเอบี นอมอล"
@@ -8,8 +10,10 @@ block content
     - var goods = "ข้าว"
     - var weigth = 50
     - var dateOfAnnounce = "23/10/2020"
-    .container-fluid
-        a(href="/work").text-dark
+    - var dateOfOrder = "วันอังคาร ที่ 13 สิงหาคม";
+    - var describe = "รับงานด่วนๆๆๆ"
+    .container-fluid.mt-5.p-5
+        a(href="/work").text-dark.mt-5
             i.fas.fa-arrow-left
             |  ย้อนกลับ
         .card.shadow-lg
@@ -20,38 +24,44 @@ block content
                 //เส้นทาง
                 .row
                     .col.d-flex
-                        h5.m-2
+                        h5.m-2 
                             i.fas.fa-location-arrow.text-danger
-                        p=  start 
+                        p.m-2= start 
                             i.fas.fa-arrow-right
-                        =  destination
+                            = destination
                 //สินค้า
                 .row
                     .col.d-flex
                         h5.m-2
                             i.fas.fa-shopping-cart.text-warning
-                        p= goods
+                        p.m-2= goods
                 //น้ำหนักสินค้า
                 .row
                     .col.d-flex
                         h5.m-2
                             i.fas.fa-weight 
-                        p= weigth
+                        p.m-2= weigth
                             |  กิโลกรัม
                 //เรทราคา
                 .row
                     .col.d-flex
                         h5.m-2
                             i.fas.fa-money-bill-wave-alt.text-success
-                        p.ml-1= rateMoney
+                        p.m-2= rateMoney
                             |  บาท
+                .row 
+                    .col.d-flex
+                        h5.m-2
+                            i.fas.fa-calendar-day.text-pink
+                        p.m-2= dateOfOrder
+
                 //
                 .row
                     .col.d-flex
                         h5.m-2
                             i.fas.fa-info-circle.text-primary
-                        p.ml-1= describe
-
+                        p.m-2= describe
+            
             a(href="/work/info/1").card-footer.text-center
                 | ติดต่อผู้ประกาศ
 

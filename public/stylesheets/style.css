@@ -1,3 +1,6 @@
+.text-pink{
+    color:pink;
+}
 .nousebg {
     background-image: url("/images/bg3.jpg");
     background-attachment: fixed;
@@ -15,7 +18,6 @@
     height: 50%;
 }
 .bg-pretty{
-    /* background-image: linear-gradient(to bottom right, red, yellow); */
     /* background: url(); */
     background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url("/images/bg3.jpg");
     background-attachment: fixed;
@@ -52,9 +54,14 @@
     bottom:0;
     left:150px;
 }
-.scrolled{
+.scrolled-dark{
     opacity: .8;
     background: black !important;
+    transition: background-color 200ms linear;
+}
+.scrolled-white{
+    opacity: .8;
+    background: white !important;
     transition: background-color 200ms linear;
 }
 .wrapper {
@@ -81,7 +88,7 @@
     bottom: 0;
     left: 0;
     transform: translateZ(-1px) scale(1.5);
-    /* background-size: 100%; */
+    background-size: 100%;
     z-index: -1;
 }
 .static {
@@ -91,15 +98,32 @@
     background-repeat: no-repeat;
   }
 .bg1::after {
-background-image: url('/images/bg3.jpg');
-background-attachment: fixed;
-background-position: center;
-background-repeat: no-repeat;
+    background-image: url('/images/bg3.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .bg2::after {
-background-image: url('/images/bg3.jpg');
-background-attachment: fixed;
-background-position: center;
-background-repeat: no-repeat;
+    background-image: url('/images/bg3.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.bg-3{
+    background-image: url('/images/bg3.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.bg-black{
+    background-color: black;
+}
+.bg-orange{
+    /* background-image: linear-gradient(to bottom right, orange, yellow) !important; */
+
+    background-color: orange !important;
+}
+.text-shadow{
+    text-shadow: 1px 1px black;
 }

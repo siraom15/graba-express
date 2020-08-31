@@ -1,17 +1,20 @@
 extends layout
 
+block navbar 
+  include component/navbar/navbar-index
+
 block content
   //banner
   .container-fluid.p-0.bg-pretty#bg-half
     .centered-25.text-white
       .typewriter.text-center
-          h1 กระบะ Express
-          #demo
+        h1 กระบะ Express
+        #demo
       .d-flex.justify-content-center
-        .btn.btn-lg.btn-danger.rounded-0.m-2
+        a(href="/work").btn.btn-lg.btn-danger.rounded-0.m-2
           i.fas.fa-check-circle 
           |  รับงาน
-        .btn.btn-lg.btn-outline-light.rounded-0.m-2
+        a(href="/").btn.btn-lg.btn-outline-light.rounded-0.m-2
           i.fas.fa-search 
           |  ประกาศหางาน
   //ข้อดี
@@ -48,32 +51,7 @@ block content
             #pills-dealer.tab-pane.fade(role='tabpanel' aria-labelledby='pills-dealer-tab')
               p
                 | กระบะ Express สำหรับผู้ประกาศ คือเว็บไซต์ที่ใช้ประกาศหาคนขับรถกระบะเพื่อบรรทุกสินค้าไปยังจุดหมายปลายทาง
-            
-  //hello gorgun
-  //- .row.mt-5
-    main.warpper
-      br
-      //- section.section.static
-      section.section.parallax.bg1
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae est saepe ad vel minima? Exercitationem fuga voluptates earum optio suscipit dolorum illo molestiae! Vero rem perferendis maiores assumenda iste commodi.
-
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto voluptas delectus vel earum a nisi ut, illo, ullam numquam recusandae ipsa iste, exercitationem porro similique. Alias dolorem error ratione aspernatur.
-
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda consequatur dicta, cumque architecto eum itaque unde minima tempore reprehenderit, at maxime iste corrupti quasi nemo voluptates, optio nam amet.
-      //- section.section.static
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae est saepe ad vel minima? Exercitationem fuga voluptates earum optio suscipit dolorum illo molestiae! Vero rem perferendis maiores assumenda iste commodi.
-
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto voluptas delectus vel earum a nisi ut, illo, ullam numquam recusandae ipsa iste, exercitationem porro similique. Alias dolorem error ratione aspernatur.
-
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda consequatur dicta, cumque architecto eum itaque unde minima tempore reprehenderit, at maxime iste corrupti quasi nemo voluptates, optio nam amet.
-      
-      //- section.section.parallax.bg2
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae est saepe ad vel minima? Exercitationem fuga voluptates earum optio suscipit dolorum illo molestiae! Vero rem perferendis maiores assumenda iste commodi.
-
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto voluptas delectus vel earum a nisi ut, illo, ullam numquam recusandae ipsa iste, exercitationem porro similique. Alias dolorem error ratione aspernatur.
-
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda consequatur dicta, cumque architecto eum itaque unde minima tempore reprehenderit, at maxime iste corrupti quasi nemo voluptates, optio nam amet.
-      
+  
   script(src="/javascripts/typing.js")
 
 

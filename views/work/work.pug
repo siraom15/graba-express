@@ -1,34 +1,39 @@
 extends ../layout
+block navbar
+    include ../component/navbar/navbar-other
 
 block content
-    .container-fluid
-        .h1 งานที่ประกาศทั้งหมด
-        hr
+    .container-fluid.mt-5.p-5
+        h4 ค้นหางานสำหรับผู้ขับรถ
         .form-group.row
             .col-5
+                label(for="") เริ่มต้น
                 select#orderBy(name="").form-control
                     option(value="" default=true) -
                     for i in province_data
                         option(value=i  default=true)= i
             .col-2.form-inline.d-flex.justify-content-center
                 i.fas.fa-arrow-right.text-dark
-            .col-5    
+            .col-5
+                label(for="") จุดหมาย    
                 select#orderBy(name="").form-control
                     option(value="" default=true) -
                     for i in province_data
                         option(value=i  default=true)= i
-        - var driverName = "นายเอ บี"
-        - var imgSrc = "/images/c.jpg"
-        - var start = "นครปฐม"
-        - var destination = "กทม"
-        - var rateMoney = 2000
-        - var describe = "ไม่มี"
-        - var goods = "ข้าว"
-        - var weigth = 50
-        - var dateOfAnnounce = "23/10/2020 | 13:20"
+        - var username = "นายเอ บี";
+        - var imgSrc = "/images/c.jpg";
+        - var start = "นครปฐม";
+        - var destination = "กทม";
+        - var rateMoney = 2000;
+        - var describe = "ไม่มี";
+        - var goods = "ข้าว";
+        - var weigth = 50;
+        - var dateOfAnnounce = "23/10/2020 | 13:20";
+        - var status = false;
+
         - for (var x = 0; x < 3; x++)
             include ../work/work-card
         #loader.d-flex.justify-content-center
             .spinner-border.text-primary(role='status').text-center
-                span.sr-only Loading...
+                span.sr-only กำลังโหลด
 

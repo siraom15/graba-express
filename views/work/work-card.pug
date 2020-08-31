@@ -1,16 +1,21 @@
 .row.mb-2
     .col-12
-        .card
-            .card-header.d-flex.justify-content-between
-                #user.media
-                    img(src=imgSrc, alt="" srcset="" height="40px").ml-3.rounded-circle
-                    h5= driverName
+        .card.shadow-lg
+            .card-header.d-flex.justify-content-between.bg-white
+                #user.d-flex
+                    img(src=imgSrc, alt="" srcset="" height="40px").rounded-circle
+                    p.text-inline= username
                 #contact
-                    p= dateOfAnnounce
-                    p
-                        a(href="http://") 
-                            | ติดต่องาน 
-                            i.fas.fa-phone
+                    if status==true
+                        h5
+                            span.badge.badge-success มีผู้รับงานแล้ว
+                    else
+                        h5
+                            span.badge.badge-info เปิดรับงาน
+                        p
+                            a(href="").text-primary
+                                | ติดต่องาน 
+                                i.fas.fa-phone
             .card-body
                 //เส้นทาง
                 .row
@@ -46,5 +51,5 @@
                         h5.m-2
                             i.fas.fa-info-circle.text-primary
                         p.m-2= describe
-            a(href="/work/info/1").card-footer.text-center.text-white.text-underline.bg-primary
+            a(href="/work/info/1").btn.text-center.text-underline.btn-info.rounded-0
                 | ดูข้อมูลเพิ่มเติม
