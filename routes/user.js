@@ -3,7 +3,9 @@ var router = express.Router();
 
 /* GET user listing. */
 router.get('/', function (req, res, next) {
-  res.send('respond with a resource');
+  let title = "หน้าสมาชิก"
+  let username = "aommie"
+  res.render('user/index', { title: title,username: username })
 });
 
 router.get('/login', (req, res, next) => {
