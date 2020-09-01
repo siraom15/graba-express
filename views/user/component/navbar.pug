@@ -1,5 +1,5 @@
 nav#navbar.navbar.navbar-expand-lg.navbar-light.shadow-sm.fixed-top
-    a.navbar-brand(href='/')
+    a.navbar-brand(href='/user')
         i.fas.fa-car-alt
         |  กระบะ express | ระบบผู้ประกาศ
     button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
@@ -7,9 +7,9 @@ nav#navbar.navbar.navbar-expand-lg.navbar-light.shadow-sm.fixed-top
     #navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.ml-auto
             li.nav-item.active
-                a.nav-link(href='/search') 
+                a.nav-link(href='/user') 
                     i.fas.fa-user 
-                    = username
+                    = firstname + " " + lastname
             li.nav-item.active
                 a.nav-link(href='./logout') 
                     i.fas.fa-sign-out-alt
