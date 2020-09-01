@@ -16,10 +16,10 @@ block content
                 .card.rounded-0.shadow-sm(style='width: 18rem;')
                     .card-body.kanit
                         .card-title.mitr.text-center.h4 เข้าสู่ระบบ | ผู้ประกาศงาน
-                        form.kanit.p-2(action='/login' method='post')
+                        form.kanit.p-2(action='' method='post')
                             .form-group
                                 label(for='phonenumber') เบอร์โทร
-                                input#phonenumber.form-control.form-control-sm(type='text' name='phonenumber' placeholder='ใส่เบอร์โทรศัพท์ของคุณ' required='' autofocus='' minlength="8")
+                                input#phonenumber.form-control.form-control-sm(type='text' name='phone_number' placeholder='ใส่เบอร์โทรศัพท์ของคุณ' required='' autofocus='' minlength="10")
                             .form-group
                                 label(for='password') รหัสผ่าน
                                 input#password.form-control.form-control-sm(type='password' name='password' placeholder='ใส่รหัสผ่านของคุณ' required='')

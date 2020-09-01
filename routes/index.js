@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Home | หน้าแรก' });
 });
 
+router.get('/logout', function(req, res, next) {
+  req.session.destroy();
+  res.redirect('/');
+});
 module.exports = router;
