@@ -34,36 +34,42 @@ block content
                                 i.fas.fa-arrow-right
                                 = location_destination
                     //สินค้า
-                    .row
-                        .col.d-flex
-                            h5.m-2
-                                i.fas.fa-shopping-cart.text-warning
-                            p.m-2= goods
+                    if goods
+                        .row
+                            .col.d-flex
+                                h5.m-2
+                                    i.fas.fa-shopping-cart.text-warning
+                                p.m-2= goods
                     //น้ำหนักสินค้า
-                    .row
-                        .col.d-flex
-                            h5.m-2
-                                i.fas.fa-weight 
-                            p.m-2= weight
-                                |  กิโลกรัม
+                    if weight
+                        .row
+                            .col.d-flex
+                                h5.m-2
+                                    i.fas.fa-weight 
+                                p.m-2= weight
+                                    |  กิโลกรัม
                     //เรทราคา
-                    .row
-                        .col.d-flex
-                            h5.m-2
-                                i.fas.fa-money-bill-wave-alt.text-success
-                            p.m-2= rateMoney
-                    .row 
-                        .col.d-flex
-                            h5.m-2
-                                i.fas.fa-calendar-day.text-pink
-                            p.m-2= dateOfWork
+                    if rateMoney
+                        .row
+                            .col.d-flex
+                                h5.m-2
+                                    i.fas.fa-money-bill-wave-alt.text-success
+                                p.m-2= rateMoney
+                    //- วันที่ทำงาน
+                    if dateOfWork
+                        .row 
+                            .col.d-flex
+                                h5.m-2
+                                    i.fas.fa-calendar-day.text-pink
+                                p.m-2= dateOfWork
 
-                    //
-                    .row
-                        .col.d-flex
-                            h5.m-2
-                                i.fas.fa-info-circle.text-primary
-                            p.m-2= infomation
+                    //ข้อมูลเพิ่มเติม
+                    if infomation
+                        .row
+                            .col.d-flex
+                                h5.m-2
+                                    i.fas.fa-info-circle.text-primary
+                                p.m-2= infomation
                 if status == 0
                     a(href="/work/info/"+id).card-footer.text-center
                         | ติดต่อผู้ประกาศ
