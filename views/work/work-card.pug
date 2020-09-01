@@ -6,7 +6,7 @@
                     img(src=imgSrc, alt="" srcset="" height="40px").rounded-circle
                     p.text-inline= username
                 #contact
-                    if status==true
+                    if status==1
                         h5
                             span.badge.badge-success มีผู้รับงานแล้ว
                     else
@@ -22,9 +22,9 @@
                     .col.d-flex
                         h5.m-2 
                             i.fas.fa-location-arrow.text-danger
-                        p.m-2= start 
+                        p.m-2= location_start 
                             i.fas.fa-arrow-right
-                            = destination
+                            = location_destination
                 //สินค้า
                 .row
                     .col.d-flex
@@ -36,7 +36,7 @@
                     .col.d-flex
                         h5.m-2
                             i.fas.fa-weight 
-                        p.m-2= weigth
+                        p.m-2= weight
                             |  กิโลกรัม
                 //เรทราคา
                 .row
@@ -44,12 +44,11 @@
                         h5.m-2
                             i.fas.fa-money-bill-wave-alt.text-success
                         p.m-2= rateMoney
-                            |  บาท
                 //
                 .row
                     .col.d-flex
                         h5.m-2
                             i.fas.fa-info-circle.text-primary
-                        p.m-2= describe
-            a(href="/work/info/1").btn.text-center.text-underline.btn-info.rounded-0
+                        p.m-2= infomation
+            a(href="/work/info/"+id).btn.text-center.text-underline.btn-dark.rounded-0
                 | ดูข้อมูลเพิ่มเติม
