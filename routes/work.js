@@ -6,7 +6,8 @@ moment.locale("th");
 router.get('/', (req, res, next) => {
     let province_data = require('../data/province.json');
     config.getConnection((err, connection)=>{
-        connection.query('SELECT * FROM work w JOIN user u on w.user_id = u.id ORDER BY w.status ASC, w.date_of_announce DESC', (err, rows)=>{
+        let sql = `SELECT w.*, u.firstname,u.lastname, u.picture_path FROM work w JOIN user u on w.user_id = u.id ORDER BY w.status ASC, w.date_of_announce DESC`;
+        connection.query(sql, (err, rows)=>{
             if(err) throw err;
             res.render('work/work', { title: 'Works |งานทั้งหมด', province_data: province_data, card_data : rows });
         })
@@ -16,7 +17,8 @@ router.get('/', (req, res, next) => {
 });
 router.get('/info/:id', (req, res, next) => {
     config.getConnection((err, connection)=>{
-        connection.query('SELECT * FROM work w JOIN user u on w.user_id = u.id WHERE w.id = ?', req.params.id, (err, rows)=>{
+        let sql = `SELECT * FROM work w JOIN user u on w.user_id = u.id WHERE w.id = ?`;
+        connection.query(sql, req.params.id, (err, rows)=>{
             if(err) throw err;
             let dateOfWork = moment(rows[0].date_of_work).format('llll');
             let dateOfAnnounce = moment(rows[0].date_of_announce).format('llll');

@@ -6,8 +6,7 @@ var crypto = require('crypto');
 
 moment.locale("th");
 
-
-var { secret } = require('../database/secret');
+var { secret_password, secret_session } = require('../secret.json');
 // auto reconnect database
 con.getConnection((err) => {
   if (err) {
@@ -43,7 +42,7 @@ router.get('/', function (req, res, next) {
   if (!req.session.loggedin) {
     res.redirect('/user/login')
   } else {
-    con.query('SELECT * FROM work w JOIN user u on w.user_id = u.id WHERE u.id = ? ORDER BY w.status ASC, w.date_of_announce DESC ', 1, (err, rows) => {
+    con.query('SELECT * FROM work w JOIN user u on w.user_id = u.id WHERE u.id = ? ORDER BY w.status ASC, w.date_of_announce DESC ', req.session.userid, (err, rows) => {
       if (err) throw err;
       let title = "หน้าสมาชิก"
       let firstname = rows[0].firstname;
@@ -75,13 +74,14 @@ router.post('/login', (req, res) => {
   var phone_number = req.body.phone_number;
   var password = req.body.password;
   if (phone_number && password) {
-    let hash_password = crypto.createHmac('sha256', secret).update(password).digest('hex');
+    let hash_password = crypto.createHmac('sha256', secret_password).update(password).digest('hex');
     con.query("SELECT * FROM user WHERE phone_number = ? AND password = ?", [phone_number, hash_password], (err, results) => {
       if (err) {
         console.log(err);
         res.render('user/form/login', { title: 'เข้าสู่ระบบ', err: "Server ยังไม่ได้เชื่อม Database" });
       }
       else if (results.length > 0) {
+        console.log(results);
         req.session.loggedin = true;
         req.session.userid = results[0].id;
         res.redirect('/user');
