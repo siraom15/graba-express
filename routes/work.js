@@ -6,7 +6,7 @@ moment.locale("th");
 router.get('/', (req, res, next) => {
     let province_data = require('../data/province.json');
     config.getConnection((err, connection)=>{
-        connection.query('SELECT * FROM work w JOIN user u on w.user_id = u.id ORDER BY w.date_of_announce DESC', (err, rows)=>{
+        connection.query('SELECT * FROM work w JOIN user u on w.user_id = u.id ORDER BY w.status ASC, w.date_of_announce DESC', (err, rows)=>{
             if(err) throw err;
             res.render('work/work', { title: 'Works |งานทั้งหมด', province_data: province_data, card_data : rows });
         })
