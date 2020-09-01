@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
             if(err) throw err;
             res.render('work/work', { title: 'Works |งานทั้งหมด', province_data: province_data, card_data : rows });
         })
-        connection.end();
+        connection.release();
     })
     
 });
@@ -22,7 +22,7 @@ router.get('/info/:id', (req, res, next) => {
             let dateOfAnnounce = moment(rows[0].date_of_announce).format('llll');
             res.render('work/info', { title: "ดูเพิ่มเติม : " + rows[0].infomation , card_data : rows, dateOfWork :  dateOfWork, dateOfAnnounce : dateOfAnnounce });
         })
-        connection.end();
+        connection.release();
     });
 
 });
