@@ -12,7 +12,7 @@ block content
         - var rateMoney = val.rateOfPrice
         - var goods = val.goods
         - var weight = val.weight
-        - var infomation = val.infomation
+        - var information = val.information
         - var status = val.status
         .container-fluid.mt-5.p-5
             a(href="/work").text-dark.mt-5
@@ -64,12 +64,12 @@ block content
                                 p.m-2= dateOfWork
 
                     //ข้อมูลเพิ่มเติม
-                    if infomation
+                    if information
                         .row
                             .col.d-flex
                                 h5.m-2
                                     i.fas.fa-info-circle.text-primary
-                                p.m-2= infomation
+                                p.m-2= information
                 if status == 0
                     a(href="/work/info/"+id).card-footer.text-center
                         | ติดต่อผู้ประกาศ
