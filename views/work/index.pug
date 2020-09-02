@@ -5,7 +5,7 @@ block navbar
 block content
     .container-fluid.mt-5.p-5
         h4 ค้นหางานสำหรับผู้ขับรถ
-        .form-group.row
+        //- .form-group.row
             .col-5
                 label(for="") เริ่มต้น
                 select#orderBy(name="").form-control
@@ -25,15 +25,21 @@ block content
             - var firstname = val.firstname
             - var lastname = val.lastname
             - var id = val.id
-            - var location_start = val.location_start
-            - var location_destination =  val.location_destination
+
             - var rateMoney = val.rateOfPrice
             - var goods = val.goods
             - var weight = val.weight
             - var dateOfAnnounce = val.date_of_announce;
             - var dateOfWork = val.date_of_work;
-            - var infomation = val.infomation
+            - var information = val.information
             - var status = val.status
+            - var province_start_id_id = val.province_start_id
+            - var amphure_start_id = val.amphure_start_id
+            - var district_start_id = val.district_start_id
+            - var province_destination_id  = val.province_destination_id
+            - var amphure_destination_id = val.amphure_destination_id
+            - var district_destination_id = val.district_destination_id
+            
             include ../work/work-card
         #loader.d-flex.justify-content-center
             .spinner-border.text-primary(role='status').text-center
