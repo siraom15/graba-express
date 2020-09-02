@@ -53,6 +53,7 @@ router.get('/', function (req, res, next) {
       res.render('user/index',
         {
           title: title,
+          loggedin : true,
           card_data: rows,
           firstname: firstname,
           lastname: lastname,
@@ -98,4 +99,16 @@ router.get('/logout', (req, res, next) => {
   req.session.destroy();
   res.redirect('/user/login')
 });
+
+router.get('/announce', (req, res, next) => {
+  let title = "ประกาศงาน";
+  res.render('user/announce',
+    { title: title,
+      loggedin : true,
+      
+    }
+  );
+})
+
+
 module.exports = router;

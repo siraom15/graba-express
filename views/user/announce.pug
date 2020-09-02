@@ -1,0 +1,20 @@
+
+extends layout
+
+block content
+    .container-fluid.p-5.mt-5
+        .row
+            .col-sm-12.col-md-12.col-lg-4
+                //- โปรไฟล์
+                #profile.mb-2
+                    include component/user-info
+                //- menu
+                #menu
+                    include component/menu
+
+            .col-sm-12.col-md-12.col-lg-8
+                .card.shadow-sm
+                    .card-header.d-flex.justify-content-center
+                        h5 สร้างประกาศใหม่
+                    .card-body
+                       
