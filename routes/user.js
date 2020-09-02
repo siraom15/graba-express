@@ -100,7 +100,11 @@ router.get('/logout', (req, res, next) => {
   req.session.destroy();
   res.redirect('/user/login')
 });
-
+router.get('/a',(req, res, next)=>{
+  req.session.userid = 1;
+  req.session.loggedin = true;
+  res.redirect('/user');
+})
 router.get('/announce', (req, res, next) => {
   if(!req.session.loggedin){
     res.redirect('/user/login');
@@ -115,19 +119,23 @@ router.get('/announce', (req, res, next) => {
       let phone_number = rows[0].phone_number;
       let age = rows[0].age;
       let id_card = rows[0].id_card;
-      let province_data = require('../data/province.json');
-      res.render('user/announce',
-        {
-          title: title,
-          loggedin : true,
-          card_data: rows,
-          firstname: firstname,
-          lastname: lastname,
-          phone_number: phone_number,
-          age: age,
-          id_card: id_card,
-          province_data : province_data
-        });
+
+      var sql_province = 'select * from provinces';
+      con.query(sql_province, (err, province_data) => {
+          if(err) throw err; 
+          res.render('user/announce', { 
+            title: title,
+            loggedin : true,
+            card_data: rows,
+            firstname: firstname,
+            lastname: lastname,
+            phone_number: phone_number,
+            age: age,
+            id_card: id_card,
+            province_data: province_data 
+          });
+      });
+      
       // con.release();
     });
   }

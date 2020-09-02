@@ -1,0 +1,16 @@
+.row
+    .form-group.col-md-4
+        input(type="hidden" id="uqid" value=uqid)
+        label(for='province') จังหวัด
+        select.form-control(name='province_id'+uqid required="true" id="province"+uqid)
+            option(value='') เลือกจังหวัด
+            each i in province_data
+                option(value=i.id)= i.name_th
+    .form-group.col-md-4
+        label(for='amphure') อำเภอ;
+        select.form-control(name='amphure_id'+uqid required="true" id="amphure"+uqid)
+            option(value='') เลือกอำเภอ
+    .form-group.col-md-4
+        label(for='district') ตำบล
+        select.form-control(name='district_id'+uqid required="true" id="district"+uqid)
+            option(value='') เลือกตำบล

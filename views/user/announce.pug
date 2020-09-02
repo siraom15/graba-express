@@ -2,6 +2,7 @@
 extends layout
 
 block content
+    
     .container-fluid.p-5.mt-5
         .row
             .col-sm-12.col-md-12.col-lg-4
@@ -18,55 +19,54 @@ block content
                         h5 สร้างประกาศใหม่
                     .card-body
                         form(action="" method="post")
-                            h5 เส้นทาง
+                            h4 เส้นทาง
                                 small.text-danger * ต้องการ 
+
                             .row.p-3
                                 .col
-                                    label(for="") เริ่มต้น
+                                    label(for="").h5 รับของ (เริ่มต้น)
                                         small.text-danger *
-                                    select(name="").form-control.form-control-sm
-                                        option(value="-" selected="true") -
-                                        each i in province_data
-                                            option(value=i)= i
+                                    - var uqid = 1
+                                    include component/province-dropdown
+                            .row.p-3   
                                 .col
-                                    label(for="") ปลายทาง
+                                    label(for="").h5 ส่งของ (ปลายทาง)
                                         small.text-danger *
-                                    select(name="").form-control.form-control-sm
-                                        option(value="-" selected="true") -
-                                        each i in province_data
-                                            option(value=i)= i
-                        small ข้อมูลด้านล่างจะกรอกหรือไม่กรอกก็ได้ 
-                        //สินค้า
-                        .row.p-3
-                            .col.d-flex
-                                h5.m-2
-                                    i.fas.fa-shopping-cart.text-warning
-                                input(type="text" placeholder="สินค้า").form-control
-                        //น้ำหนักสินค้า
-                        .row.p-3
-                            .col.d-flex
-                                h5.m-2
-                                    i.fas.fa-weight 
-                                input(type="text" placeholder="น้ำหนักสินค้า").form-control
-                        //เรทราคา
-                        .row.p-3
-                            .col.d-flex
-                                h5.m-2
-                                    i.fas.fa-money-bill-wave-alt.text-success
-                                input(type="text" placeholder="เรทราคา/ราคา").form-control
-                        // วันที่ทำงาน
-                        .row.p-3
-                            .col.d-flex
-                                h5.m-2
-                                    i.fas.fa-calendar-day.text-pink
-                                input(type="date" name="" placeholder="วันที่ทำงาน").form-control
+                                    - var uqid = 2
+                                    include component/province-dropdown
+                            
+                            small ข้อมูลด้านล่างจะกรอกหรือไม่กรอกก็ได้ 
+                            //สินค้า
+                            .row.p-3
+                                .col.d-flex
+                                    h5.m-2
+                                        i.fas.fa-shopping-cart.text-warning
+                                    input(type="text" placeholder="สินค้า").form-control
+                            //น้ำหนักสินค้า
+                            .row.p-3
+                                .col.d-flex
+                                    h5.m-2
+                                        i.fas.fa-weight 
+                                    input(type="text" placeholder="น้ำหนักสินค้า").form-control
+                            //เรทราคา
+                            .row.p-3
+                                .col.d-flex
+                                    h5.m-2
+                                        i.fas.fa-money-bill-wave-alt.text-success
+                                    input(type="text" placeholder="เรทราคา/ราคา").form-control
+                            // วันที่ทำงาน
+                            .row.p-3
+                                .col.d-flex
+                                    h5.m-2
+                                        i.fas.fa-calendar-day.text-pink
+                                    input(type="date" name="" placeholder="วันที่ทำงาน").form-control
 
-                        //ข้อมูลเพิ่มเติม
-                        .row.p-3
-                            .col.d-flex
-                                h5.m-2
-                                    i.fas.fa-info-circle.text-primary
-                                textarea(name="" cols="30" rows="10" maxlength="1000" placeholder="ข้อมูลเพิ่มเติม").form-control
-                        .row.p-3
+                            //ข้อมูลเพิ่มเติม
+                            .row.p-3
+                                .col.d-flex
+                                    h5.m-2
+                                        i.fas.fa-info-circle.text-primary
+                                    textarea(name="" cols="30" rows="10" maxlength="1000" placeholder="ข้อมูลเพิ่มเติม").form-control
+                            .row.p-3
                             .col.d-flex
                                 .btn.btn-block.btn-outline-success ประกาศงาน
