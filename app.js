@@ -6,8 +6,6 @@ var logger = require('morgan');
 var session = require('express-session');
 const { secret_password, secret_session } = require('./secret.json');
 
-
-
 var app = express();
 
 // view engine setup
@@ -45,8 +43,11 @@ var announceUser = require('./routes/user/announce');
 app.use('/user/announce', announceUser);
 
 // work zone
-var workRouter = require('./routes/work/work');
+var workRouter = require('./routes/work/index');
 app.use('/work', workRouter);
+
+var workInfo = require('./routes/work/info');
+app.use('/work/info', workInfo);
 
 // apizone
 var apiRouter = require('./routes/api/api');
