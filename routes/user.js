@@ -7,6 +7,7 @@ var crypto = require('crypto');
 moment.locale("th");
 
 var { secret_password, secret_session } = require('../secret.json');
+const session = require('express-session');
 // auto reconnect database
 con.getConnection((err) => {
   if (err) {
@@ -42,7 +43,8 @@ router.get('/', function (req, res, next) {
   if (!req.session.loggedin) {
     res.redirect('/user/login')
   } else {
-    con.query('SELECT * FROM work w JOIN user u on w.user_id = u.id WHERE u.id = ? ORDER BY w.status ASC, w.date_of_announce DESC ', req.session.userid, (err, rows) => {
+    let sql = `SELECT * FROM work w JOIN user u on w.user_id = u.id WHERE u.id = ? ORDER BY w.status ASC, w.date_of_announce DESC `;
+    con.query(sql, req.session.userid, (err, rows) => {
       if (err) throw err;
       let title = "หน้าสมาชิก"
       let firstname = rows[0].firstname;
@@ -61,7 +63,6 @@ router.get('/', function (req, res, next) {
           age: age,
           id_card: id_card
         });
-      // con.release();
     });
   }
 });
@@ -101,14 +102,36 @@ router.get('/logout', (req, res, next) => {
 });
 
 router.get('/announce', (req, res, next) => {
-  let title = "ประกาศงาน";
-  res.render('user/announce',
-    { title: title,
-      loggedin : true,
-      
-    }
-  );
-})
+  if(!req.session.loggedin){
+    res.redirect('/user/login');
+  }
+  else{
+    let sql = `SELECT * FROM user WHERE id = ? `;
+    con.query(sql, req.session.userid, (err, rows) => {
+      if (err) throw err;
+      let title = "ประกาศงาน"
+      let firstname = rows[0].firstname;
+      let lastname = rows[0].lastname;
+      let phone_number = rows[0].phone_number;
+      let age = rows[0].age;
+      let id_card = rows[0].id_card;
+      let province_data = require('../data/province.json');
+      res.render('user/announce',
+        {
+          title: title,
+          loggedin : true,
+          card_data: rows,
+          firstname: firstname,
+          lastname: lastname,
+          phone_number: phone_number,
+          age: age,
+          id_card: id_card,
+          province_data : province_data
+        });
+      // con.release();
+    });
+  }
+});1
 
 
 module.exports = router;
