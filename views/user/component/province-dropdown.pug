@@ -1,5 +1,5 @@
 .row
-    .form-group.col-md-4
+    .form-group.col-md-4.needs-validation(novalidate="true")
         label(for='province') จังหวัด
             span.text-danger *
         select.form-control(name='province_'+uqid required="true" id="province_"+uqid)
@@ -13,5 +13,6 @@
             option(value='') เลือกอำเภอ
     .form-group.col-md-4
         label(for='district') ตำบล
-        select.form-control(name='district_'+uqid  id="district_"+uqid)
+        span.text-danger *
+        select.form-control(name='district_'+uqid required="true" id="district_"+uqid)
             option(value='') เลือกตำบล
