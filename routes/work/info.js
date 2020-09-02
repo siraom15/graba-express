@@ -10,7 +10,7 @@ router.get('/:id', (req, res, next) => {
         if (err) throw err;
         let dateOfWork = moment(rows[0].date_of_work).format('llll');
         let dateOfAnnounce = moment(rows[0].date_of_announce).format('llll');
-        res.render('work/info', { title: "ดูเพิ่มเติม : " + rows[0].infomation, card_data: rows, dateOfWork: dateOfWork, dateOfAnnounce: dateOfAnnounce });
+        res.render('work/info', { title: "ดูเพิ่มเติม : " + rows[0].information, card_data: rows, dateOfWork: dateOfWork, dateOfAnnounce: dateOfAnnounce });
     });
 
 });

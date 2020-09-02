@@ -39,6 +39,56 @@ router.get('/', (req, res, next) => {
     }
 });
 router.post('/', (req, res, next) => {
+    if (!req.session.loggedin) {
+        res.redirect('/user/login');
+    }
+    else {
+        // 
+        let regEx = /(\d{4})-(\d{2})-(\d{2})/;
+        let now = moment().format().match(regEx)[0];
+
+        console.log(now);
+        let data = {
+            userid: req.session.userid,
+            date_of_announce: now,
+            province_start: parseInt(req.body.province_start),
+            amphure_start: parseInt(req.body.amphure_start),
+            district_start: parseInt(req.body.district_start),
+            province_destination: parseInt(req.body.province_destination),
+            amphure_destination: parseInt(req.body.amphure_destination),
+            district_destination: parseInt(req.body.district_destination),
+            goods: req.body.goods,
+            weight: req.body.weight,
+            rate_of_price: req.body.rate_of_price,
+            date_of_work: req.body.date_of_work,
+            information: req.body.information,
+            submit: req.body.submit,
+            status: 0
+        }
+        console.log(data);
+        var sql = `INSERT INTO work (user_id, date_of_announce, goods, rateOfPrice, weight, information, status, date_of_work) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+        con.query(sql, [data.userid, data.date_of_announce, data.goods, data.rate_of_price, data.weight, data.information, data.status, data.date_of_work],
+            (err, result) => {
+                if (err) throw err;
+                if (result.insertId) {
+                    let insertId = result.insertId;
+                    var sql2 = `INSERT INTO work_location (work_id, province_start_id, amphure_start_id, district_start_id, province_destination_id, amphure_destination_id, district_destination_id)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)`;
+                    con.query(sql2, 
+                        [insertId, data.province_start, data.amphure_start, 
+                            data.district_start, data.province_destination, 
+                            data.amphure_destination, data.district_destination
+                        ],
+                        (err, result2)=>{
+                            if(err) throw err;
+                            console.log(result2);
+                            res.redirect('/work/info/'+insertId);
+                        })
+                } else {
+                    res.redirect('/')
+                }
+            });
+    }
 });
 
 module.exports = router;
