@@ -1,16 +1,15 @@
  $(function(){
-    var provinceObject1 =  $("#province_1");
-    var amphureObject1 =  $("#amphure_1");
-    var districtObject1 =  $("#district_1");
+    var provinceObject1 =  $("#province_start");
+    var amphureObject1 =  $("#amphure_start");
+    var districtObject1 =  $("#district_start");
 
-    var provinceObject2 =  $("#province_2");
-    var amphureObject2 =  $("#amphure_2");
-    var districtObject2 =  $("#district_2");
+    var provinceObject2 =  $("#province_destination");
+    var amphureObject2 =  $("#amphure_destination");
+    var districtObject2 =  $("#district_destination");
     
     // on change province
     provinceObject1.on('change', function(){
         var provinceId = $(this).val();
-        console.log(provinceId);
         amphureObject1.html('<option value="">เลือกอำเภอ</option>');
         districtObject1.html('<option value="">เลือกตำบล</option>');
         $.get('/api/get_amphure/' + provinceId, function(data){
@@ -24,7 +23,7 @@
     });
     provinceObject2.on('change', function(){
         var provinceId = $(this).val();
-        console.log(provinceId);
+        // console.log(provinceId);
         amphureObject2.html('<option value="">เลือกอำเภอ</option>');
         districtObject2.html('<option value="">เลือกตำบล</option>');
         $.get('/api/get_amphure/' + provinceId, function(data){

@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var config = require('../database/config').mysql_pool;
+var config = require('../../database/config').mysql_pool;
 var moment = require('moment');
 moment.locale("th");
 router.get('/', (req, res, next) => {
-    let province_data = require('../data/province.json');
+    let province_data = require('../../data/province.json');
     config.getConnection((err, connection)=>{
         let sql = `SELECT w.*, u.firstname,u.lastname, u.picture_path FROM work w JOIN user u on w.user_id = u.id ORDER BY w.status ASC, w.date_of_announce DESC`;
         connection.query(sql, (err, rows)=>{

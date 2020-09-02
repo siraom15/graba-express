@@ -18,7 +18,7 @@ block content
                     .card-header.d-flex.justify-content-center
                         h5 สร้างประกาศใหม่
                     .card-body
-                        form(action="" method="post")
+                        form(action="" method="get")
                             h4 เส้นทาง
                                 small.text-danger * ต้องการ 
 
@@ -26,13 +26,13 @@ block content
                                 .col
                                     label(for="").h5 รับของ (เริ่มต้น)
                                         small.text-danger *
-                                    - var uqid = 1
+                                    - var uqid = "start"
                                     include component/province-dropdown
                             .row.p-3   
                                 .col
                                     label(for="").h5 ส่งของ (ปลายทาง)
                                         small.text-danger *
-                                    - var uqid = 2
+                                    - var uqid = "destination"
                                     include component/province-dropdown
                             
                             small ข้อมูลด้านล่างจะกรอกหรือไม่กรอกก็ได้ 
@@ -57,8 +57,8 @@ block content
                             // วันที่ทำงาน
                             .row.p-3
                                 .col.d-flex
-                                    h5.m-2
-                                        i.fas.fa-calendar-day.text-pink
+                                    h5.m-2.d-flex 
+                                        i.fas.fa-calendar-day.text-pink 
                                     input(type="date" name="" placeholder="วันที่ทำงาน").form-control
 
                             //ข้อมูลเพิ่มเติม
@@ -69,4 +69,4 @@ block content
                                     textarea(name="" cols="30" rows="10" maxlength="1000" placeholder="ข้อมูลเพิ่มเติม").form-control
                             .row.p-3
                             .col.d-flex
-                                .btn.btn-block.btn-outline-success ประกาศงาน
+                                button(type="submit").btn.btn-block.btn-outline-success ประกาศงาน
