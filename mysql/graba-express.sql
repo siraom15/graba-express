@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Sep 03, 2020 at 06:53 AM
+-- Generation Time: Sep 03, 2020 at 01:52 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.8
 
@@ -10031,6 +10031,13 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `random_id`, `firstname`, `lastname`, `age`, `phone_number`, `picture_path`, `id_card`, `password`) VALUES
+(4, '1', 'อ่อมมี่', 'สุดเท่', 30, 1234567890, 'a', '1234567890987', 'a8aa97bcfb59706c419fd0f9bc4c8becc21fa8bb9f6e73508ec2383abbf91004');
+
 -- --------------------------------------------------------
 
 --
@@ -10050,6 +10057,13 @@ CREATE TABLE `work` (
   `date_of_work` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `work`
+--
+
+INSERT INTO `work` (`id`, `random_work_id`, `user_id`, `date_of_announce`, `goods`, `rateOfPrice`, `weight`, `information`, `status`, `date_of_work`) VALUES
+(19, NULL, 4, '2020-09-03 20:46:33', 'ผักชี', '2000', '20 กิโล', 'ชอบหี', 0, '2020-09-10');
+
 -- --------------------------------------------------------
 
 --
@@ -10066,6 +10080,13 @@ CREATE TABLE `work_location` (
   `amphure_destination_id` int(11) NOT NULL,
   `district_destination_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `work_location`
+--
+
+INSERT INTO `work_location` (`id`, `work_id`, `province_start_id`, `amphure_start_id`, `district_start_id`, `province_destination_id`, `amphure_destination_id`, `district_destination_id`) VALUES
+(14, 19, 1, 1, 100102, 15, 179, 240202);
 
 --
 -- Indexes for dumped tables
@@ -10131,19 +10152,19 @@ ALTER TABLE `provinces`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `work`
 --
 ALTER TABLE `work`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `work_location`
 --
 ALTER TABLE `work_location`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
