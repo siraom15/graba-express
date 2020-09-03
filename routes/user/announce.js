@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var moment = require('moment');
 var con = require('../../database/connect');
-
+// const dateTime = require('../../function/getTime');
 router.get('/', (req, res, next) => {
     if (!req.session.loggedin) {
         res.redirect('/user/login');
@@ -44,11 +44,17 @@ router.post('/', (req, res, next) => {
     }
     else {
         // 
-        let regEx = /(\d{4})-(\d{2})-(\d{2})/;
-        let now = moment().format().match(regEx)[0];
+        let regEx = /(\d{4})-(\d{2})-(\d{2})T(\d+):(\d+):(\d+)/;
+
+        let x = moment().format().match(regEx);
+
+        let date = x.slice(1, 4).join("-");
+        let time = x.slice(4).join(":");
+        let dateTime = date + " " + time;
+
         let data = {
             userid: req.session.userid,
-            date_of_announce: now,
+            date_of_announce: dateTime,
             province_start: parseInt(req.body.province_start),
             amphure_start: parseInt(req.body.amphure_start),
             district_start: parseInt(req.body.district_start),
@@ -71,15 +77,14 @@ router.post('/', (req, res, next) => {
                     let insertId = result.insertId;
                     var sql2 = `INSERT INTO work_location (work_id, province_start_id, amphure_start_id, district_start_id, province_destination_id, amphure_destination_id, district_destination_id)
                     VALUES (?, ?, ?, ?, ?, ?, ?)`;
-                    con.query(sql2, 
-                        [insertId, data.province_start, data.amphure_start, 
-                            data.district_start, data.province_destination, 
+                    con.query(sql2,
+                        [insertId, data.province_start, data.amphure_start,
+                            data.district_start, data.province_destination,
                             data.amphure_destination, data.district_destination
                         ],
-                        (err, result2)=>{
-                            if(err) throw err;
-                            console.log("insert id : "+insertId);
-                            res.redirect('/work/info/'+insertId+"?inserted_status=success");
+                        (err, result2) => {
+                            if (err) throw err;
+                            res.redirect('/work/info/' + insertId + "?inserted_status=success");
                         })
                 } else {
                     res.redirect('/')

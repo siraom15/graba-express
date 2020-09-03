@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Sep 02, 2020 at 05:49 AM
+-- Generation Time: Sep 03, 2020 at 06:53 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.8
 
@@ -10031,14 +10031,6 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `random_id`, `firstname`, `lastname`, `age`, `phone_number`, `picture_path`, `id_card`, `password`) VALUES
-(1, '123asdas123123asd', '<script>alert(1);</script>', 'hahaha', 19, 1234567890, '/image/haha.jpg', '123', 'a8aa97bcfb59706c419fd0f9bc4c8becc21fa8bb9f6e73508ec2383abbf91004'),
-(2, '23ase123231', 'nekl', 'eieie', 12, 1, '/i/', '1234567809123', 'a8aa97bcfb59706c419fd0f9bc4c8becc21fa8bb9f6e73508ec2383abbf91004');
-
 -- --------------------------------------------------------
 
 --
@@ -10047,25 +10039,33 @@ INSERT INTO `user` (`id`, `random_id`, `firstname`, `lastname`, `age`, `phone_nu
 
 CREATE TABLE `work` (
   `id` int(11) NOT NULL,
+  `random_work_id` varchar(255) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
-  `date_of_announce` date NOT NULL,
-  `location_start` varchar(255) NOT NULL,
-  `location_destination` varchar(255) NOT NULL,
+  `date_of_announce` datetime NOT NULL,
   `goods` varchar(255) DEFAULT NULL,
   `rateOfPrice` varchar(255) DEFAULT NULL,
-  `weight` int(11) DEFAULT NULL,
-  `infomation` varchar(1000) DEFAULT NULL,
+  `weight` varchar(255) DEFAULT NULL,
+  `information` varchar(1000) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT '0',
   `date_of_work` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `work`
+-- Table structure for table `work_location`
 --
 
-INSERT INTO `work` (`id`, `user_id`, `date_of_announce`, `location_start`, `location_destination`, `goods`, `rateOfPrice`, `weight`, `infomation`, `status`, `date_of_work`) VALUES
-(1, 1, '2020-09-16', 'chainat', 'nakhon ปฐม', NULL, '100บาท ต่ตอ กิโล', 30, 'sdasdasdadsasdasd', 1, '2020-09-23'),
-(2, 1, '2020-09-08', '123123123', 'asdasdasd1231231', 'อิอิ', '123123', 50, 'ฟหกฟหกฟหกฟหกฟหกฟหก\r\n', 0, '2020-09-03');
+CREATE TABLE `work_location` (
+  `id` int(11) NOT NULL,
+  `work_id` int(11) NOT NULL,
+  `province_start_id` int(11) NOT NULL,
+  `amphure_start_id` int(11) NOT NULL,
+  `district_start_id` int(11) DEFAULT NULL,
+  `province_destination_id` int(11) NOT NULL,
+  `amphure_destination_id` int(11) NOT NULL,
+  `district_destination_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -10105,6 +10105,13 @@ ALTER TABLE `work`
   ADD KEY `user_id` (`user_id`);
 
 --
+-- Indexes for table `work_location`
+--
+ALTER TABLE `work_location`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `work_id` (`work_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -10124,13 +10131,19 @@ ALTER TABLE `provinces`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `work`
 --
 ALTER TABLE `work`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `work_location`
+--
+ALTER TABLE `work_location`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -10141,6 +10154,12 @@ ALTER TABLE `work`
 --
 ALTER TABLE `work`
   ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `work_location`
+--
+ALTER TABLE `work_location`
+  ADD CONSTRAINT `work_id` FOREIGN KEY (`work_id`) REFERENCES `work` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
