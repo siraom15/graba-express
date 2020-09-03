@@ -79,7 +79,7 @@ router.post('/', (req, res, next) => {
                         (err, result2)=>{
                             if(err) throw err;
                             console.log("insert id : "+insertId);
-                            res.redirect('/work/info/'+insertId);
+                            res.redirect('/work/info/'+insertId+"?inserted_status=success");
                         })
                 } else {
                     res.redirect('/')
