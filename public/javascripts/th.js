@@ -23,7 +23,6 @@
     });
     provinceObject2.on('change', function(){
         var provinceId = $(this).val();
-        // console.log(provinceId);
         amphureObject2.html('<option value="">เลือกอำเภอ</option>');
         districtObject2.html('<option value="">เลือกตำบล</option>');
         $.get('/api/get_amphure/' + provinceId, function(data){

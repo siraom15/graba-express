@@ -46,8 +46,6 @@ router.post('/', (req, res, next) => {
         // 
         let regEx = /(\d{4})-(\d{2})-(\d{2})/;
         let now = moment().format().match(regEx)[0];
-
-        console.log(now);
         let data = {
             userid: req.session.userid,
             date_of_announce: now,
@@ -65,7 +63,6 @@ router.post('/', (req, res, next) => {
             submit: req.body.submit,
             status: 0
         }
-        console.log(data);
         var sql = `INSERT INTO work (user_id, date_of_announce, goods, rateOfPrice, weight, information, status, date_of_work) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
         con.query(sql, [data.userid, data.date_of_announce, data.goods, data.rate_of_price, data.weight, data.information, data.status, data.date_of_work],
             (err, result) => {
@@ -81,7 +78,7 @@ router.post('/', (req, res, next) => {
                         ],
                         (err, result2)=>{
                             if(err) throw err;
-                            console.log(result2);
+                            console.log("insert id : "+insertId);
                             res.redirect('/work/info/'+insertId);
                         })
                 } else {

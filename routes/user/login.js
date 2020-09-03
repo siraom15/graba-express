@@ -21,7 +21,6 @@ router.post('/', (req, res) => {
                 res.render('user/form/login', { title: 'เข้าสู่ระบบ', err: "Server ยังไม่ได้เชื่อม Database" });
             }
             else if (results.length > 0) {
-                console.log(results);
                 req.session.loggedin = true;
                 req.session.userid = results[0].id;
                 res.redirect('/user');
