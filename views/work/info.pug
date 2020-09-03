@@ -6,7 +6,7 @@ block content
         - var imgSrc = "/images/c.jpg"
         - var firstname = val.firstname
         - var lastname = val.lastname
-        - var id = val.id
+        - var work_id = val.work_id
         - var rateMoney = val.rateOfPrice
         - var goods = val.goods
         - var weight = val.weight
@@ -19,6 +19,9 @@ block content
         - var amphure_destination_name = val.amphure_destination_name
         - var district_destination_name = val.district_destination_name
         .container-fluid.mt-5.p-5
+            if inserted_status
+                - var text = "ประกาศงานสำเร็จ"
+                include ../component/modal
             a(href="/work").text-dark.mt-5
                 i.fas.fa-arrow-left
                 |  ย้อนกลับ
@@ -66,7 +69,6 @@ block content
                                 h5.m-2
                                     i.fas.fa-weight 
                                 p.m-2= weight
-                                    |  กิโลกรัม
                     //เรทราคา
                     if rateMoney
                         .row

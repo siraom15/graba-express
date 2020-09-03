@@ -31,7 +31,7 @@ router.get('/', function (req, res, next) {
         wl.*,u.firstname,u.lastname, u.picture_path 
         FROM work w 
 
-        JOIN work_location wl on wl.id = w.id
+        JOIN work_location wl on wl.work_id = w.id
         JOIN provinces p1 on wl.province_start_id = p1.id
         JOIN amphures a1 on wl.amphure_start_id = a1.id
         JOIN districts d1 on wl.district_start_id = d1.id
@@ -44,7 +44,8 @@ router.get('/', function (req, res, next) {
 
         ORDER BY w.status ASC, w.date_of_announce DESC`;
       con.query(sql2,[req.session.userid],(err, rows2)=>{
-        if(rows.length>0){
+        console.log(rows2);
+        if(rows2.length>0){
           res.render('user/index',
           {
             title: title,
@@ -70,10 +71,6 @@ router.get('/', function (req, res, next) {
           });
         }
       });
-
-
-
-      
     });
   }
 });
