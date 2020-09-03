@@ -7,13 +7,17 @@ block content
         - var firstname = val.firstname
         - var lastname = val.lastname
         - var id = val.id
-        - var location_start = val.location_start
-        - var location_destination =  val.location_destination
         - var rateMoney = val.rateOfPrice
         - var goods = val.goods
         - var weight = val.weight
         - var information = val.information
         - var status = val.status
+        - var province_start_name_name = val.province_start_name
+        - var amphure_start_name = val.amphure_start_name
+        - var district_start_name = val.district_start_name
+        - var province_destination_name  = val.province_destination_name
+        - var amphure_destination_name = val.amphure_destination_name
+        - var district_destination_name = val.district_destination_name
         .container-fluid.mt-5.p-5
             a(href="/work").text-dark.mt-5
                 i.fas.fa-arrow-left
@@ -30,9 +34,24 @@ block content
                         .col.d-flex
                             h5.m-2 
                                 i.fas.fa-location-arrow.text-danger
-                            p.m-2= location_start
-                                i.fas.fa-arrow-right
-                                = location_destination
+                            .row
+                                .col 
+                                    p
+                                        |จังหวัด
+                                        = province_start_name 
+                                        |  อำเภอ
+                                        = amphure_start_name
+                                        |  ตำบล
+                                        = district_start_name
+                                .col-12
+                                    i.fas.fa-arrow-down.text-danger
+                                .col
+                                    |จังหวัด
+                                    = province_destination_name 
+                                    |  อำเภอ
+                                    = amphure_destination_name
+                                    |  ตำบล
+                                    = district_destination_name
                     //สินค้า
                     if goods
                         .row

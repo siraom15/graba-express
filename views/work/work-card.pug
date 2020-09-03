@@ -23,9 +23,24 @@
                     .col.d-flex
                         h5.m-2 
                             i.fas.fa-location-arrow.text-danger
-                        p.m-2= location_start 
-                            i.fas.fa-arrow-right
-                            = location_destination
+                        .row
+                            .col 
+                                p
+                                    |จังหวัด
+                                    = province_start_name 
+                                    |  อำเภอ
+                                    = amphure_start_name
+                                    |  ตำบล
+                                    = district_start_name
+                            .col-12
+                                i.fas.fa-arrow-down.text-danger
+                            .col
+                                |จังหวัด
+                                = province_destination_name 
+                                |  อำเภอ
+                                = amphure_destination_name
+                                |  ตำบล
+                                = district_destination_name
                 //สินค้า
                 if goods
                     .row
