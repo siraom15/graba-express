@@ -7,12 +7,12 @@ config = {
     user : 'root',
     password : 'root',
     database : 'graba-express'
-  }),
-  mysql_def : mysql.createConnection({
-    host : 'localhost',
-    user : 'root',
-    password : 'root',
-    database : 'graba-express'
   })
+  // ,mysql_def : mysql.createConnection({
+  //   host : 'localhost',
+  //   user : 'root',
+  //   password : 'root',
+  //   database : 'graba-express'
+  // })
 };
 module.exports = config;

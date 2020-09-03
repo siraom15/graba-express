@@ -1,0 +1,72 @@
+
+extends layout
+
+block content
+    
+    .container-fluid.p-5.mt-5
+        .row
+            .col-sm-12.col-md-12.col-lg-4
+                //- โปรไฟล์
+                #profile.mb-2
+                    include component/user-info
+                //- menu
+                #menu
+                    include component/menu
+
+            .col-sm-12.col-md-12.col-lg-8
+                .card.shadow-sm
+                    .card-header.d-flex.justify-content-center
+                        h5 สร้างประกาศใหม่
+                    .card-body
+                        form(action="" method="post")
+                            h4 เส้นทาง
+                                small.text-danger * ต้องการ 
+
+                            .row.p-3
+                                .col
+                                    label(for="").h5 รับของ (เริ่มต้น)
+                                        small.text-danger *
+                                    - var uqid = "start"
+                                    include component/province-dropdown
+                            .row.p-3   
+                                .col
+                                    label(for="").h5 ส่งของ (ปลายทาง)
+                                        small.text-danger *
+                                    - var uqid = "destination"
+                                    include component/province-dropdown
+                            
+                            //- small ข้อมูลด้านล่างจะกรอกหรือไม่กรอกก็ได้ 
+                            //สินค้า
+                            .row.p-3
+                                .col.d-flex
+                                    h5.m-2
+                                        i.fas.fa-shopping-cart.text-warning
+                                    input(type="text" placeholder="สินค้า *" required="true" name="goods").form-control
+                                    .invalid-feedback ใส่ชื่อสินค้า
+                            //น้ำหนักสินค้า
+                            .row.p-3
+                                .col.d-flex
+                                    h5.m-2
+                                        i.fas.fa-weight 
+                                    input(type="text" placeholder="น้ำหนักสินค้า" name="weight").form-control
+                            //เรทราคา
+                            .row.p-3
+                                .col.d-flex
+                                    h5.m-2
+                                        i.fas.fa-money-bill-wave-alt.text-success
+                                    input(type="text" placeholder="เรทราคา/ราคา" name="rate_of_price").form-control
+                            // วันที่ทำงาน
+                            .row.p-3
+                                .col.d-flex
+                                    h5.m-2.d-flex 
+                                        i.fas.fa-calendar-day.text-pink 
+                                    input(type="date" placeholder="วันที่ทำงาน" name="date_of_work" required="true").form-control
+                            //ข้อมูลเพิ่มเติม
+                            .row.p-3
+                                .col.d-flex
+                                    h5.m-2
+                                        i.fas.fa-info-circle.text-primary
+                                    textarea(cols="30" rows="10" maxlength="1000" placeholder="ข้อมูลเพิ่มเติม" name="information").form-control
+                            .row.p-3
+                            .col.d-flex
+                                button(type="submit" name="submit").btn.btn-block.btn-outline-success ประกาศงาน

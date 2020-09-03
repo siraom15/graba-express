@@ -1,6 +1,11 @@
 extends ../layout
 
-block navbar 
-  include component/navbar
+block navbar
+  if loggedin
+    include component/navbar
 block content
+block script
+  script(src='/javascripts/th.js')
+  script(src='/javascripts/validate.js')
+
 

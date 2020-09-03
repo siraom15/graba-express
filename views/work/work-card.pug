@@ -4,51 +4,70 @@
             .card-header.d-flex.justify-content-between.bg-white
                 #user.d-flex
                     img(src=imgSrc, alt="" srcset="" height="40px").rounded-circle
-                    p.text-inline= username
+                    p.text-inline= firstname + " " + lastname
                 #contact
-                    if status==1
+                    if status==1 
                         h5
                             span.badge.badge-success มีผู้รับงานแล้ว
                     else
                         h5
                             span.badge.badge-info เปิดรับงาน
-                        p
-                            a(href="").text-primary
-                                | ติดต่องาน 
-                                i.fas.fa-phone
+                        if !loggedin
+                            p
+                                a(href="").text-primary
+                                    | ติดต่องาน 
+                                    i.fas.fa-phone
             .card-body
                 //เส้นทาง
                 .row
                     .col.d-flex
                         h5.m-2 
                             i.fas.fa-location-arrow.text-danger
-                        p.m-2= location_start 
-                            i.fas.fa-arrow-right
-                            = location_destination
+                        .row
+                            .col 
+                                p
+                                    |จังหวัด
+                                    = province_start_name 
+                                    |  อำเภอ
+                                    = amphure_start_name
+                                    |  ตำบล
+                                    = district_start_name
+                            .col-12
+                                i.fas.fa-arrow-down.text-danger
+                            .col
+                                |จังหวัด
+                                = province_destination_name 
+                                |  อำเภอ
+                                = amphure_destination_name
+                                |  ตำบล
+                                = district_destination_name
                 //สินค้า
-                .row
-                    .col.d-flex
-                        h5.m-2
-                            i.fas.fa-shopping-cart.text-warning
-                        p.m-2= goods
+                if goods
+                    .row
+                        .col.d-flex
+                            h5.m-2
+                                i.fas.fa-shopping-cart.text-warning
+                            p.m-2= goods
                 //น้ำหนักสินค้า
-                .row
-                    .col.d-flex
-                        h5.m-2
-                            i.fas.fa-weight 
-                        p.m-2= weight
-                            |  กิโลกรัม
+                if weight
+                    .row
+                        .col.d-flex
+                            h5.m-2
+                                i.fas.fa-weight 
+                            p.m-2= weight
                 //เรทราคา
-                .row
-                    .col.d-flex
-                        h5.m-2
-                            i.fas.fa-money-bill-wave-alt.text-success
-                        p.m-2= rateMoney
-                //
-                .row
-                    .col.d-flex
-                        h5.m-2
-                            i.fas.fa-info-circle.text-primary
-                        p.m-2= infomation
-            a(href="/work/info/"+id).btn.text-center.text-underline.btn-dark.rounded-0
+                if rateMoney
+                    .row
+                        .col.d-flex
+                            h5.m-2
+                                i.fas.fa-money-bill-wave-alt.text-success
+                            p.m-2= rateMoney
+                //ข้อมูลเพิ่มเติม
+                if information
+                    .row
+                        .col.d-flex
+                            h5.m-2
+                                i.fas.fa-info-circle.text-primary
+                            p.m-2= information
+            a(href="/work/info/"+work_id).btn.text-center.text-underline.btn-dark.rounded-0
                 | ดูข้อมูลเพิ่มเติม
