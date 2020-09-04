@@ -79,7 +79,7 @@ router.post('/', (req, res, next) => {
         }
         // create random work id
         let random_txt = Math.random().toString(16).substr(3);
-        let random_work_id = crypto.createHmac('sha256', secret_announce).update(random_txt).digest('hex');
+        let random_work_id = crypto.createHmac('sha256', secret_announce).update(random_txt).digest('hex').substr(40);
 
         // create sql code
         var sql = `INSERT INTO work 
