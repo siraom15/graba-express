@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var moment = require('moment');
 var con = require('../../database/connect');
+var crypto = require('crypto');
 const { secret_password, secret_session, secret_announce } = require('../../secret.json');
 
 router.get('/', (req, res, next) => {
@@ -77,20 +78,23 @@ router.post('/', (req, res, next) => {
             status: 0
         }
         // create random work id
-        let random_work_id = crypto.createHmac('sha256', secret_announce).update(password).digest('hex');
+        let random_txt = Math.random().toString(16).substr(3);
+        let random_work_id = crypto.createHmac('sha256', secret_announce).update(random_txt).digest('hex');
+
+        // create sql code
         var sql = `INSERT INTO work 
                     (random_work_id,user_id, date_of_announce, goods, rateOfPrice, weight, information, status, date_of_work) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
         con.query(sql,
             [
                 random_work_id,
                 data.userid,
-                data.date_of_announce, 
-                data.goods, 
-                data.rate_of_price, 
-                data.weight, 
-                data.information, 
-                data.status, 
+                data.date_of_announce,
+                data.goods,
+                data.rate_of_price,
+                data.weight,
+                data.information,
+                data.status,
                 data.date_of_work],
             (err, result) => {
                 if (err) throw err;
@@ -106,13 +110,13 @@ router.post('/', (req, res, next) => {
                                 )
                                 VALUES (?, ?, ?, ?, ?, ?, ?)`;
                     con.query(sql2,
-                        [   
-                            insertId, 
-                            data.province_start, 
+                        [
+                            insertId,
+                            data.province_start,
                             data.amphure_start,
-                            data.district_start, 
+                            data.district_start,
                             data.province_destination,
-                            data.amphure_destination, 
+                            data.amphure_destination,
                             data.district_destination
                         ],
                         (err, result2) => {
