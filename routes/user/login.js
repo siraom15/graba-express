@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/a', (req, res, next) => {
-    req.session.userid = 1;
+    req.session.userid = 4;
     req.session.loggedin = true;
     res.redirect('/user');
 });

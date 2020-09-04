@@ -10,9 +10,9 @@ router.get('/', function (req, res, next) {
     res.redirect('/user/login')
   } else {
     let sql = `SELECT * FROM user WHERE id = ? `;
-    con.query(sql, [req.session.userid], (err, rows) => {
-      console.log(sql);
+    con.query(sql, req.session.userid ,  (err, rows) => {
       if (err) console.log(err);
+      // if(rows.length)
       let title = "หน้าสมาชิก"
       let firstname = rows[0].firstname;
       let lastname = rows[0].lastname;
@@ -41,10 +41,9 @@ router.get('/', function (req, res, next) {
         JOIN user u on w.user_id = u.id 
 
         WHERE u.id = ?
-
+ 
         ORDER BY w.status ASC, w.date_of_announce DESC`;
       con.query(sql2,[req.session.userid],(err, rows2)=>{
-        console.log(rows2);
         if(rows2.length>0){
           res.render('user/index',
           {
