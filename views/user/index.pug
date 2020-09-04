@@ -19,6 +19,7 @@ block content
                     .card-body
                         if card_data
                             each val in card_data
+                                - var random_work_id = val.random_work_id
                                 - var imgSrc = "/images/c.jpg"
                                 - var firstname = val.firstname
                                 - var lastname = val.lastname

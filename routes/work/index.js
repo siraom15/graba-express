@@ -31,7 +31,9 @@ router.get('/', (req, res, next) => {
     con.query(sql, (err, rows) => {
         if (err) throw err;
         if (rows.length > 0) {
-            res.render('work/index', { title: 'Works |งานทั้งหมด', card_data: rows });
+            let dateOfWork = moment(rows[0].date_of_work).format('llll');
+            let dateOfAnnounce = moment(rows[0].date_of_announce).format('llll');
+            res.render('work/index', { title: 'Works |งานทั้งหมด', card_data: rows, dateOfAnnounce: dateOfAnnounce, dateOfWork: dateOfWork });
 
         } else {
             res.render('work/index', { title: 'Works |งานทั้งหมด', card_data: null });

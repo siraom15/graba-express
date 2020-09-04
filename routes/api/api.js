@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var mysql = require('mysql');
 var con = require('../../database/connect');
 
 router.get('/get_amphure/:province_id',(req,res,next)=>{

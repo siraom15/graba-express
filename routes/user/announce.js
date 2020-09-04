@@ -50,15 +50,8 @@ router.post('/', (req, res, next) => {
     }
     else {
         // create regEx for match date-> datetime
-        let regEx = /(\d{4})-(\d{2})-(\d{2})T(\d+):(\d+):(\d+)/;
-
-        let x = moment().format().match(regEx);
-
-        let date = x.slice(1, 4).join("-");
-        let time = x.slice(4).join(":");
-
-        let dateTime = date + " " + time;
-
+        let time = require('../../function/getTime')
+        let dateTime = time.now();
         // create data json
         let data = {
             userid: req.session.userid,
@@ -123,7 +116,7 @@ router.post('/', (req, res, next) => {
                             if (err) throw err;
 
                             // if success user will be redirect to work info which he/she creates
-                            res.redirect('/work/info/' + insertId + "?inserted_status=success");
+                            res.redirect('/work/info/' + random_work_id + "?inserted_status=success");
 
                         })
                 } else {
