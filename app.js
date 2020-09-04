@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
-const { secret_password, secret_session } = require('./secret.json');
+const { secret_password, secret_session, secret_announce } = require('./secret.json');
 
 var app = express();
 

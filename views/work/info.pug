@@ -6,6 +6,7 @@ block content
         - var imgSrc = "/images/c.jpg"
         - var firstname = val.firstname
         - var lastname = val.lastname
+        - var random_work_id = val.random_work_id
         - var work_id = val.work_id
         - var rateMoney = val.rateOfPrice
         - var goods = val.goods
@@ -92,7 +93,7 @@ block content
                                     i.fas.fa-info-circle.text-primary
                                 p.m-2= information
                 if status == 0
-                    a(href="/work/info/"+id).card-footer.text-center
+                    a(href="/work/info/"+random_work_id).card-footer.text-center
                         | ติดต่อผู้ประกาศ
                 else
                     .card-footer.text-center.disabled.bg-success.text-white

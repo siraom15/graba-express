@@ -23,7 +23,7 @@ block content
                         option(value=i  default=true)= i
         if card_data
             each val in card_data
-                - console.log(val)
+                - var random_work_id = val.random_work_id
                 - var imgSrc = "/images/c.jpg"
                 - var firstname = val.firstname
                 - var lastname = val.lastname
