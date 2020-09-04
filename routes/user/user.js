@@ -4,21 +4,25 @@ var con = require('../../database/connect');
 var moment = require('moment');
 moment.locale("th");
 
-/* GET user listing. */
+//  we edit on (host)/user
+
+// now 
 router.get('/', function (req, res, next) {
+  // identify user
   if (!req.session.loggedin) {
     res.redirect('/user/login')
   } else {
     let sql = `SELECT * FROM user WHERE id = ? `;
-    con.query(sql, req.session.userid ,  (err, rows) => {
+    con.query(sql, req.session.userid, (err, rows) => {
       if (err) console.log(err);
-      // if(rows.length)
       let title = "หน้าสมาชิก"
       let firstname = rows[0].firstname;
       let lastname = rows[0].lastname;
       let phone_number = rows[0].phone_number;
       let age = rows[0].age;
       let id_card = rows[0].id_card;
+
+      // defined sql code that select all data of work
       let sql2 = `
         SELECT w.*,
         p1.name_th AS province_start_name ,
@@ -43,39 +47,46 @@ router.get('/', function (req, res, next) {
         WHERE u.id = ?
  
         ORDER BY w.status ASC, w.date_of_announce DESC`;
-      con.query(sql2,[req.session.userid],(err, rows2)=>{
-        if(rows2.length>0){
+
+      con.query(sql2, [req.session.userid], (err, rows2) => {
+        // check if they already announce work, we will return data to them
+        if (rows2.length > 0) {
           res.render('user/index',
-          {
-            title: title,
-            loggedin: true,
-            card_data: rows2,
-            firstname: firstname,
-            lastname: lastname,
-            phone_number: phone_number,
-            age: age,
-            id_card: id_card
-          });
-        }else{
+            {
+              title: title,
+              loggedin: true,
+              card_data: rows2,
+              firstname: firstname,
+              lastname: lastname,
+              phone_number: phone_number,
+              age: age,
+              id_card: id_card
+            });
+        } 
+        // else we render with no data
+        else {
           res.render('user/index',
-          {
-            title: title,
-            loggedin: true,
-            card_data: null,
-            firstname: firstname,
-            lastname: lastname,
-            phone_number: phone_number,
-            age: age,
-            id_card: id_card
-          });
+            {
+              title: title,
+              loggedin: true,
+              card_data: null,
+              firstname: firstname,
+              lastname: lastname,
+              phone_number: phone_number,
+              age: age,
+              id_card: id_card
+            });
         }
       });
     });
   }
 });
 
+// logout 
 router.get('/logout', (req, res, next) => {
+  // destroy session
   req.session.destroy();
+  // redirect to login
   res.redirect('/user/login')
 });
 
