@@ -62,28 +62,32 @@ block content
                             .col.d-flex
                                 h5.m-2
                                     i.fas.fa-shopping-cart.text-warning
-                                p.m-2= goods
+                                p.m-2 สินค้า : 
+                                    = goods
                     //น้ำหนักสินค้า
                     if weight
                         .row
                             .col.d-flex
                                 h5.m-2
                                     i.fas.fa-weight 
-                                p.m-2= weight
+                                p.m-2 น้ำหนัก : 
+                                    = weight
                     //เรทราคา
                     if rateMoney
                         .row
                             .col.d-flex
                                 h5.m-2
                                     i.fas.fa-money-bill-wave-alt.text-success
-                                p.m-2= rateMoney
+                                p.m-2 ราคา/เรทราคา : 
+                                    = rateMoney
                     //- วันที่ทำงาน
                     if dateOfWork
                         .row 
                             .col.d-flex
                                 h5.m-2
                                     i.fas.fa-calendar-day.text-pink
-                                p.m-2= dateOfWork
+                                p.m-2 วันที่ทำงาน : 
+                                    = dateOfWork
 
                     //ข้อมูลเพิ่มเติม
                     if information
@@ -91,7 +95,8 @@ block content
                             .col.d-flex
                                 h5.m-2
                                     i.fas.fa-info-circle.text-primary
-                                p.m-2= information
+                                p.m-2 ข้อมูลเพิ่มเติม : 
+                                    = information
                 if status == 0
                     a(href="/work/info/"+random_work_id).card-footer.text-center
                         | ติดต่อผู้ประกาศ
