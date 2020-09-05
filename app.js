@@ -33,7 +33,7 @@ var indexRouter = require('./routes/index/index');
 app.use('/', indexRouter);
 
 // user zone
-var userRouter = require('./routes/user/user');
+var userRouter = require('./routes/user/index');
 app.use('/user', userRouter);
 
 var loginUser = require('./routes/user/login');

@@ -22,11 +22,12 @@ block content
         .container-fluid.mt-5.p-5
             if inserted_status
                 - var text = "ประกาศงานสำเร็จ"
-                include ../component/modal
+                - console.log("hey-----------------------------------")
+                include ../component/sweetmodal
             a(href="/work").text-dark.mt-5
                 i.fas.fa-arrow-left
                 |  ย้อนกลับ
-            .card.shadow-lg
+            .card.shadow-sm
                 .card-header.d-flex.justify-content-between
                     .d-flex
                         img(src=imgSrc, alt="" srcset="" height="40px").rounded-circle
