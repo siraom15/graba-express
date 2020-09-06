@@ -3,8 +3,8 @@ block navbar
     include ../component/navbar/navbar-other
 
 block content
-    .container-fluid.mt-5.p-5
-        h4 ค้นหางานสำหรับผู้ขับรถ
+    #allwork.container-fluid.p-lg-5.p-md-5.p-sm-0.bg-white
+        h4.mt-5 ค้นหางานสำหรับผู้ขับรถ
         hr
         //- .form-group.row
             .col-5
@@ -23,28 +23,14 @@ block content
                         option(value=i  default=true)= i
         if card_data
             each val in card_data
-                - var random_work_id = val.random_work_id
-                - var imgSrc = "/images/c.jpg"
-                - var firstname = val.firstname
-                - var lastname = val.lastname
-                - var work_id = val.work_id
-                - var rateMoney = val.rateOfPrice
-                - var goods = val.goods
-                - var weight = val.weight
-                - var dateOfAnnounce = val.date_of_announce;
-                - var dateOfWork = val.date_of_work;
-                - var information = val.information
-                - var status = val.status
-                - var province_start_name = val.province_start_name
-                - var amphure_start_name = val.amphure_start_name
-                - var district_start_name = val.district_start_name
-                - var province_destination_name  = val.province_destination_name
-                - var amphure_destination_name = val.amphure_destination_name
-                - var district_destination_name = val.district_destination_name
-                
-                include ../work/work-card
-            #loader.d-flex.justify-content-center
-                .spinner-border.text-primary(role='status').text-center
-                    span.sr-only กำลังโหลด
+                include data
+                include work-card
+            #viewMore
+            #seemore.d-flex.justify-content-center
+                button#seemore_btn.btn.btn-dark
+                    .spinner-border.text-danger(role='status').text-center 
+            
         else 
             p แย่จัง ยังไม่มีผู้ประกาศงานเลย 😞
+block script
+    script(src="/javascripts/view_more.js")

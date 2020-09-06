@@ -2,8 +2,7 @@
 extends layout
 
 block content
-    
-    .container-fluid.p-5.mt-5
+    .container-fluid.mt-5.p-lg-5.p-md-5.p-sm-1.bg-white
         .row
             .col-sm-12.col-md-12.col-lg-4
                 //- โปรไฟล์
@@ -34,7 +33,7 @@ block content
                                         small.text-danger *
                                     - var uqid = "destination"
                                     include component/province-dropdown
-                            
+
                             //- small ข้อมูลด้านล่างจะกรอกหรือไม่กรอกก็ได้ 
                             //สินค้า
                             .row.p-3
@@ -60,7 +59,7 @@ block content
                                 .col.d-flex
                                     h5.m-2.d-flex 
                                         i.fas.fa-calendar-day.text-pink 
-                                    input(type="date" placeholder="วันที่ทำงาน" name="date_of_work" required="true").form-control
+                                    input(type="datetime-local" placeholder="วันที่ทำงาน" name="date_of_work" required="true").form-control
                             //ข้อมูลเพิ่มเติม
                             .row.p-3
                                 .col.d-flex
@@ -69,4 +68,9 @@ block content
                                     textarea(cols="30" rows="10" maxlength="1000" placeholder="ข้อมูลเพิ่มเติม" name="information").form-control
                             .row.p-3
                             .col.d-flex
-                                button(type="submit" name="submit").btn.btn-block.btn-outline-success ประกาศงาน
+                                button(type="submit" name="submit").btn.btn-block.btn-dark 
+                                    i.fas.fa-bullhorn
+                                    |  ประกาศงาน  
+                                    i.fas.fa-bullhorn
+block script
+    script(src="/javascripts/th.js")

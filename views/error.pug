@@ -1,6 +1,17 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  .container-fluid.p-5.centered.bg-black.text-white.text-shadow.bg-black
+    .row.d-flex.justify-content-center
+      .display-1 404
+      .display-4
+        span.txt-rotate(data-period="500" data-rotate='["" ,"Error Code", "ไม่พบหน้านี้.", "Page not found."]')
+    .row.d-flex.justify-content-center
+      a(href="/").text-white.h5 
+        u กลับหน้าแรก
+block script
+  script(src="/javascripts/typing-codepen.js")
+
+  //- h1= message
+  //- h2= error.status
+  //- pre #{error.stack}

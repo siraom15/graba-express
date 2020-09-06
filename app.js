@@ -7,7 +7,7 @@ var session = require('express-session');
 const { secret_password, secret_session, secret_announce } = require('./secret.json');
 
 var app = express();
-
+app.locals.moment = require('moment');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -33,11 +33,14 @@ var indexRouter = require('./routes/index/index');
 app.use('/', indexRouter);
 
 // user zone
-var userRouter = require('./routes/user/user');
+var userRouter = require('./routes/user/index');
 app.use('/user', userRouter);
 
 var loginUser = require('./routes/user/login');
 app.use('/user/login', loginUser);
+
+var signupUser = require('./routes/user/sign-up');
+app.use('/user/sign-up', signupUser);
 
 var announceUser = require('./routes/user/announce');
 app.use('/user/announce', announceUser);
@@ -48,6 +51,9 @@ app.use('/work', workRouter);
 
 var workInfo = require('./routes/work/info');
 app.use('/work/info', workInfo);
+
+var viewMoreWork = require('./routes/work/view_more');
+app.use('/work/view_more', viewMoreWork);
 
 // apizone
 var apiRouter = require('./routes/api/api');
@@ -63,10 +69,10 @@ app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  console.log(err);
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', {title : "ไม่พบหน้านี้"});
 });
 
 module.exports = app;
