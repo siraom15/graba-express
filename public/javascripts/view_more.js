@@ -5,11 +5,10 @@ $().ready(() => {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - nearToBottom) {
             ++page;
             $.get('/work/view_more/' + page, function (data) {
-                console.log(data);
                 $("#viewMore").append(data)
-                if(!data){
+                if (!data) {
                     $("#seemore_btn").hide();
-                }else{
+                } else {
                     $("#seemore_btn").show();
                 }
             });
