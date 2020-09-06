@@ -7,7 +7,7 @@ moment.locale("th");
 router.get('/', (req, res, next) => {
     // let sql = `SELECT w.*, u.firstname,u.lastname, u.picture_path FROM work w JOIN user u on w.user_id = u.id ORDER BY w.status ASC, w.date_of_announce DESC`;
     let sql =
-        `SELECT w.*,
+    `SELECT w.*,
     p1.name_th AS province_start_name ,
     a1.name_th AS amphure_start_name,
     d1.name_th AS district_start_name,
@@ -26,14 +26,15 @@ router.get('/', (req, res, next) => {
     JOIN amphures a2 on wl.amphure_destination_id = a2.id
     JOIN districts d2 on wl.district_destination_id = d2.id
 
-    ORDER BY w.status ASC, w.date_of_announce DESC`;
+    ORDER BY w.status ASC, w.date_of_announce DESC
+    
+    LIMIT 0,3
+    `;
 
     con.query(sql, (err, rows) => {
         if (err) throw err;
         if (rows.length > 0) {
-            let dateOfWork = moment(rows[0].date_of_work).format('llll');
-            let dateOfAnnounce = moment(rows[0].date_of_announce).format('llll');
-            res.render('work/index', { title: 'Works |งานทั้งหมด', card_data: rows, dateOfAnnounce: dateOfAnnounce, dateOfWork: dateOfWork });
+            res.render('work/index', { title: 'Works |งานทั้งหมด', card_data: rows });
 
         } else {
             res.render('work/index', { title: 'Works |งานทั้งหมด', card_data: null });
