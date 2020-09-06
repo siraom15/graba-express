@@ -138,3 +138,11 @@ html{
 .text-shadow{
     text-shadow: 1px 1px black;
 }
+.fixed-buttom{
+    position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
