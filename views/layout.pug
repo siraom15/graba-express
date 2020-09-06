@@ -12,7 +12,7 @@ html(lang="en")
     link(href="https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap" rel="stylesheet")
     link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css")
     link(rel="stylesheet" href="/stylesheets/sweet-modal.css")
-    link(rel="stylesheet" href="stylesheets/loader.css")
+    link(rel="stylesheet" href="/stylesheets/loader.css")
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" )
     script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous")
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous")
@@ -20,12 +20,13 @@ html(lang="en")
     script(src="/javascripts/jquery.sweet-modal.min.js")
     script(src="/javascripts/background.js")
     script(src="/javascripts/navbar.js")
-  body.font-kanit
+    script(src="/javascripts/moment.js")
+  body.font-kanit.bg-white
     block navbar
     block content
     include component/loader
-  script
-    |$(window).on("load",function(){
-    |      $(".loader-wrapper").fadeOut("slow");
-    |});
+  script.
+    $(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+    });
   block script

@@ -27,7 +27,7 @@
                             i.fas.fa-location-arrow.text-danger
                         .row
                             .col 
-                                p
+                                p จาก : 
                                     |จังหวัด
                                     = province_start_name 
                                     |  อำเภอ
@@ -37,12 +37,13 @@
                             .col-12
                                 i.fas.fa-arrow-down.text-danger
                             .col
-                                |จังหวัด
-                                = province_destination_name 
-                                |  อำเภอ
-                                = amphure_destination_name
-                                |  ตำบล
-                                = district_destination_name
+                                p ไปยัง : 
+                                    |จังหวัด
+                                    = province_destination_name 
+                                    |  อำเภอ
+                                    = amphure_destination_name
+                                    |  ตำบล
+                                    = district_destination_name
                 //สินค้า
                 if goods
                     .row

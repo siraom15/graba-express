@@ -3,26 +3,10 @@ block navbar
     include ../component/navbar/navbar-other
 block content
     each val in card_data
-        - var imgSrc = "/images/c.jpg"
-        - var firstname = val.firstname
-        - var lastname = val.lastname
-        - var random_work_id = val.random_work_id
-        - var work_id = val.work_id
-        - var rateMoney = val.rateOfPrice
-        - var goods = val.goods
-        - var weight = val.weight
-        - var information = val.information
-        - var status = val.status
-        - var province_start_name_name = val.province_start_name
-        - var amphure_start_name = val.amphure_start_name
-        - var district_start_name = val.district_start_name
-        - var province_destination_name  = val.province_destination_name
-        - var amphure_destination_name = val.amphure_destination_name
-        - var district_destination_name = val.district_destination_name
-        .container-fluid.mt-5.p-5
+        include ./data
+        .container-fluid.mt-5.p-5.bg-white
             if inserted_status
                 - var text = "ประกาศงานสำเร็จ"
-                - console.log("hey-----------------------------------")
                 include ../component/sweetmodal
             a(href="/work").text-dark.mt-5
                 i.fas.fa-arrow-left
@@ -41,7 +25,7 @@ block content
                                 i.fas.fa-location-arrow.text-danger
                             .row
                                 .col 
-                                    p
+                                    p จาก : 
                                         |จังหวัด
                                         = province_start_name 
                                         |  อำเภอ
@@ -51,12 +35,13 @@ block content
                                 .col-12
                                     i.fas.fa-arrow-down.text-danger
                                 .col
-                                    |จังหวัด
-                                    = province_destination_name 
-                                    |  อำเภอ
-                                    = amphure_destination_name
-                                    |  ตำบล
-                                    = district_destination_name
+                                    p ไปยัง : 
+                                        |จังหวัด
+                                        = province_destination_name 
+                                        |  อำเภอ
+                                        = amphure_destination_name
+                                        |  ตำบล
+                                        = district_destination_name
                     //สินค้า
                     if goods
                         .row
