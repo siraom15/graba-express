@@ -68,9 +68,15 @@ block content
                                     textarea(cols="30" rows="10" maxlength="1000" placeholder="ข้อมูลเพิ่มเติม" name="information").form-control
                             .row.p-3
                             .col.d-flex
-                                button(type="submit" name="submit").btn.btn-block.btn-dark 
+                                button(type="submit" name="submit" id="submitBtn").btn.btn-block.btn-dark 
                                     i.fas.fa-bullhorn
                                     |  ประกาศงาน  
                                     i.fas.fa-bullhorn
 block script
     script(src="/javascripts/th.js")
+    script.
+        $("#submitBtn").click(()=>{
+            $.sweetModal.confirm('ยืนยันการประกาศ', function() {
+                //- $.sweetModal('Thanks for confirming!');
+            });
+        })
