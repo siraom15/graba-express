@@ -4,7 +4,6 @@ var crypto = require('crypto');
 const { secret_password, secret_session, secret_announce } = require('../../secret.json');
 const session = require('express-session');
 var con = require('../../database/connect');
-
 //  we edit on (host)/login
 
 // render login 
@@ -28,6 +27,7 @@ router.post('/', (req, res) => {
             if (err) {
                 console.log(err);
                 res.render('user/form/login', { title: 'เข้าสู่ระบบ', err: "Server ยังไม่ได้เชื่อม Database" });
+                con.end();
             }
             else if (results.length > 0) {
                 // if logged in create session 
@@ -36,10 +36,13 @@ router.post('/', (req, res) => {
 
                 // redirect to /user 
                 res.redirect('/user');
+                
 
             } else {
                 //  if results.length <= 0 it's mean they have no user
                 res.render('user/form/login', { title: 'เข้าสู่ระบบ', err: "เบอร์โทรหรือรหัสผ่านผิด" })
+                con.end();
+
             }
         });
 

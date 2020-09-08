@@ -17,7 +17,7 @@ block content
                     .card-header.d-flex.justify-content-center
                         h5 สร้างประกาศใหม่
                     .card-body
-                        form(action="" method="post")
+                        form(action="" method="post" novalidate="")
                             h4 เส้นทาง
                                 small.text-danger * ต้องการ 
 
@@ -67,10 +67,16 @@ block content
                                         i.fas.fa-info-circle.text-primary
                                     textarea(cols="30" rows="10" maxlength="1000" placeholder="ข้อมูลเพิ่มเติม" name="information").form-control
                             .row.p-3
-                            .col.d-flex
-                                button(type="submit" name="submit").btn.btn-block.btn-dark 
-                                    i.fas.fa-bullhorn
-                                    |  ประกาศงาน  
-                                    i.fas.fa-bullhorn
+                                .col.d-flex
+                                    button(type="submit" name="submit" id="submitBtn").btn.btn-block.btn-dark 
+                                        i.fas.fa-bullhorn
+                                        |  ประกาศงาน  
+                                        i.fas.fa-bullhorn
 block script
     script(src="/javascripts/th.js")
+    //- script.
+        $("#submitBtn").click(()=>{
+            $.sweetModal.confirm('ยืนยันการประกาศ', function() {
+                //- $.sweetModal('Thanks for confirming!');
+            });
+        })

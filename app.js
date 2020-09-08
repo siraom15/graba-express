@@ -45,6 +45,9 @@ app.use('/user/sign-up', signupUser);
 var announceUser = require('./routes/user/announce');
 app.use('/user/announce', announceUser);
 
+var userInfo = require('./routes/user/info');
+app.use('/user/info', userInfo);
+
 // work zone
 var workRouter = require('./routes/work/index');
 app.use('/work', workRouter);

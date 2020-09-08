@@ -2,7 +2,7 @@
     .col-12
         .card.shadow-sm
             .card-header.d-flex.justify-content-between.bg-white
-                #user.d-flex
+                a(href="/user/info/"+random_user_id target="_blank")#user.d-flex
                     img(src=imgSrc, alt="" srcset="" height="40px").rounded-circle
                     p.text-inline= firstname + " " + lastname
                 #contact
@@ -16,7 +16,7 @@
                             span.badge.badge-info เปิดรับงาน
                         if !loggedin
                             p
-                                a(href="").text-primary
+                                a(href="/work/info/"+random_work_id target="_blank").text-primary
                                     | ติดต่องาน 
                                     i.fas.fa-phone
             .card-body

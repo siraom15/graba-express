@@ -7,14 +7,18 @@ moment.locale("th");
 router.get('/', (req, res, next) => {
     // let sql = `SELECT w.*, u.firstname,u.lastname, u.picture_path FROM work w JOIN user u on w.user_id = u.id ORDER BY w.status ASC, w.date_of_announce DESC`;
     let sql =
-    `SELECT w.*,
+    `SELECT 
+    w.*,
     p1.name_th AS province_start_name ,
     a1.name_th AS amphure_start_name,
     d1.name_th AS district_start_name,
     p2.name_th AS province_destination_name ,
     a2.name_th AS amphure_destination_name,
     d2.name_th AS district_destination_name,
-    wl.*,u.firstname,u.lastname, u.picture_path 
+    wl.*,u.firstname,
+    u.lastname, 
+    u.picture_path, 
+    u.random_user_id
     FROM work w 
     JOIN user u on w.user_id = u.id 
 

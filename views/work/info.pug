@@ -13,7 +13,7 @@ block content
                 |  ย้อนกลับ
             .card.shadow-sm
                 .card-header.d-flex.justify-content-between
-                    .d-flex
+                    a(href="/user/info/"+random_user_id target="_blank").d-flex
                         img(src=imgSrc, alt="" srcset="" height="40px").rounded-circle
                         p.text-inline= firstname + " " + lastname
                     p= dateOfAnnounce
