@@ -17,7 +17,7 @@ block content
                     .card-header.d-flex.justify-content-center
                         h5 สร้างประกาศใหม่
                     .card-body
-                        form(action="" method="post")
+                        form(action="" method="post" novalidate="")
                             h4 เส้นทาง
                                 small.text-danger * ต้องการ 
 
@@ -74,7 +74,7 @@ block content
                                         i.fas.fa-bullhorn
 block script
     script(src="/javascripts/th.js")
-    script.
+    //- script.
         $("#submitBtn").click(()=>{
             $.sweetModal.confirm('ยืนยันการประกาศ', function() {
                 //- $.sweetModal('Thanks for confirming!');

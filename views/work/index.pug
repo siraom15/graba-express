@@ -4,33 +4,34 @@ block navbar
 
 block content
     #allwork.container-fluid.p-lg-5.p-md-5.p-sm-0.bg-white
-        h4.mt-5 ค้นหางานสำหรับผู้ขับรถ
-        hr
-        //- .form-group.row
-            .col-5
-                label(for="") เริ่มต้น
-                select#orderBy(name="").form-control
-                    option(value="" default=true) -
-                    for i in province_data
-                        option(value=i  default=true)= i
-            .col-2.form-inline.d-flex.justify-content-center
-                i.fas.fa-arrow-right.text-dark
-            .col-5
-                label(for="") จุดหมาย    
-                select#orderBy(name="").form-control
-                    option(value="" default=true) -
-                    for i in province_data
-                        option(value=i  default=true)= i
-        if card_data
-            each val in card_data
-                include data
-                include work-card
-            #viewMore
-            #seemore.d-flex.justify-content-center
-                button#seemore_btn.btn.btn-dark
-                    .spinner-border.text-danger(role='status').text-center 
-            
-        else 
-            p แย่จัง ยังไม่มีผู้ประกาศงานเลย 😞
+        .container.mt-5
+            h4.mt-5 ค้นหางานสำหรับผู้ขับรถ
+            hr
+            //- .form-group.row
+                .col-5
+                    label(for="") เริ่มต้น
+                    select#orderBy(name="").form-control
+                        option(value="" default=true) -
+                        for i in province_data
+                            option(value=i  default=true)= i
+                .col-2.form-inline.d-flex.justify-content-center
+                    i.fas.fa-arrow-right.text-dark
+                .col-5
+                    label(for="") จุดหมาย    
+                    select#orderBy(name="").form-control
+                        option(value="" default=true) -
+                        for i in province_data
+                            option(value=i  default=true)= i
+            if card_data
+                each val in card_data
+                    include data
+                    include work-card
+                #viewMore
+                #seemore.d-flex.justify-content-center
+                    button#seemore_btn.btn.btn-dark
+                        .spinner-border.text-danger(role='status').text-center 
+                
+            else 
+                p แย่จัง ยังไม่มีผู้ประกาศงานเลย 😞
 block script
     script(src="/javascripts/view_more.js")
