@@ -16,7 +16,6 @@ router.get('/:page', (req, res, next) => {
 
         let start = 3 * (page - 1);
         let item_perpage = 3;
-        console.log(page);
         let sql =
             `SELECT
             w.id, 
@@ -55,9 +54,9 @@ router.get('/:page', (req, res, next) => {
             res.render('work/view-more',{card_data:rows});
             res.end();
         })
-    } else {
-        res.redirect('/');
-    }
+    }else{
+        res.end();
+    } 
 });
 
 module.exports = router;

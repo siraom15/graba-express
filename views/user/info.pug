@@ -1,0 +1,36 @@
+extends ../layout
+
+block navbar
+    include ../component/navbar/navbar-other
+block content
+    .container.p-lg-5.p-md-5.p-sm-3.bg-white
+        .card.shadow-sm.mt-5
+            .card-body
+                .row.d-flex.justify-content-center
+                    .col-sm-12.col-md-12.col-lg-6
+                        h4 ข้อมูลผู้ใช้
+                        hr
+                        .row
+                            .col-sm-4.col-md-6.col-lg-3
+                                img(src="/images/c.jpg" alt="" srcset="").img-fluid.rounded-circle
+                            .col-sm-8.col-md-6.col-lg-9
+                                h5 
+                                    |ชื่อ: 
+                                    = user_data[0].firstname + " " + user_data[0].lastname
+        .card.shadow-sm.mt-5
+            .card-body
+                .row.d-flex.justify-content-center
+                    .col-sm-12.col-md-12.col-lg-6
+                        h4 งานที่เคยประกาศ
+                        hr
+                        if card_data
+                            h5 
+                                |ทั้งหมด 
+                                = card_data.length
+                                | งาน
+                            each val in card_data
+                                include ../work/data
+                                include ../work/work-card
+                        else
+                            p ผู้ใช้ยังไม่เคยประกาศงาน 
+

@@ -15,7 +15,11 @@ router.get('/:random_work_id', (req, res, next) => {
     a2.name_th AS amphure_destination_name,
     d2.name_th AS district_destination_name,
     wl.*,
-    u.firstname, u.lastname, u.picture_path 
+    u.firstname, 
+    u.lastname, 
+    u.picture_path,
+    u.random_user_id
+     
     FROM work w 
     JOIN user u on w.user_id = u.id  
     JOIN work_location wl on wl.work_id = w.id

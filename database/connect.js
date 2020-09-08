@@ -1,6 +1,6 @@
 var con = require('./config').mysql_pool;
 
-con.getConnection((err) => {
+con.getConnection((err, connection) => {
     if (err) {
         console.error('error connecting: ' + err.stack);
         return;
