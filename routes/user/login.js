@@ -33,6 +33,7 @@ router.post('/', (req, res) => {
                 // if logged in create session 
                 req.session.loggedin = true;
                 req.session.userid = results[0].id;
+                req.session.random_user_id = results[0].random_user_id;
 
                 // redirect to /user 
                 res.redirect('/user');
@@ -54,7 +55,9 @@ router.post('/', (req, res) => {
 router.get('/a', (req, res, next) => {
     req.session.userid = 4;
     req.session.loggedin = true;
+    req.session.random_user_id = "c13c20a7dbd023f6a4962a3a3c60d916c52abe695ae87fabe5dc0bda85090225"
     res.redirect('/user');
+
 });
 
 module.exports = router;

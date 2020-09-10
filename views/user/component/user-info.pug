@@ -3,13 +3,13 @@
         h5 เกี่ยวกับคุณ
     .card-body
         .row
-            img(src="/images/c.jpg" alt="" srcset="").rounded-circle.mx-auto.d-block.img-fluid
+            a(href="/user/change_picture")
+                img(src="/images/upload/"+user_data[0].picture_path alt="" srcset="").rounded-circle.mx-auto.d-block.img-fluid
         p ชื่อ-นามสกุล : 
-            = firstname + " " + lastname
+            = user_data[0].firstname + " " + user_data[0].lastname
         p เบอร์โทรศัพท์ :
-            = phone_number
+            = user_data[0].phone_number
         p อายุ : 
-            = age
+            = user_data[0].age
         p เลขบัตรประชาชน : 
-            = id_card
-            
+            = user_data[0].id_card

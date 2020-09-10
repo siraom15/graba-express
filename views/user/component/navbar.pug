@@ -9,7 +9,7 @@ nav#navbar.navbar.navbar-expand-lg.navbar-light.shadow-sm.fixed-top.mb-5
             li.nav-item.active
                 a.nav-link(href='/user') 
                     i.fas.fa-user 
-                    = firstname + " " + lastname
+                    = user_data[0].firstname + " " + user_data[0].lastname
             li.nav-item.active
                 a.nav-link(href='/logout') 
                     i.fas.fa-sign-out-alt
