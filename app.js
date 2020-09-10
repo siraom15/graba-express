@@ -48,6 +48,9 @@ app.use('/user/announce', announceUser);
 var userInfo = require('./routes/user/info');
 app.use('/user/info', userInfo);
 
+var changePicUser = require('./routes/user/changpic');
+app.use('/user/change_picture', changePicUser);
+
 // work zone
 var workRouter = require('./routes/work/index');
 app.use('/work', workRouter);

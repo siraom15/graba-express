@@ -16,12 +16,6 @@ router.get('/', function (req, res, next) {
     con.query(sql, req.session.userid, (err, rows) => {
       if (err) console.log(err);
       let title = "หน้าสมาชิก"
-      let firstname = rows[0].firstname;
-      let lastname = rows[0].lastname;
-      let phone_number = rows[0].phone_number;
-      let age = rows[0].age;
-      let id_card = rows[0].id_card;
-
       // defined sql code that select all data of work
       let sql2 = `
         SELECT w.*,
@@ -55,12 +49,8 @@ router.get('/', function (req, res, next) {
             {
               title: title,
               loggedin: true,
-              card_data: rows2,
-              firstname: firstname,
-              lastname: lastname,
-              phone_number: phone_number,
-              age: age,
-              id_card: id_card
+              user_data : rows,
+              card_data: rows2
             });
         } 
         // else we render with no data
@@ -69,12 +59,8 @@ router.get('/', function (req, res, next) {
             {
               title: title,
               loggedin: true,
-              card_data: null,
-              firstname: firstname,
-              lastname: lastname,
-              phone_number: phone_number,
-              age: age,
-              id_card: id_card
+              user_data : rows,
+              card_data: null
             });
         }
       });

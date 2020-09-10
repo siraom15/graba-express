@@ -43,7 +43,6 @@ router.get('/:user_random_id', (req, res, next) => {
                 if (err) throw err;
                 if (rows2.length > 0) {
                     // เคยประกาศงาน
-                    console.log(rows);
                     res.render('user/info', { title: title, user_data: rows, card_data: rows2 });
                     res.end();
 

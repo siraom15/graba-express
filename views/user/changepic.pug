@@ -1,0 +1,50 @@
+
+extends layout
+
+block content
+    .container-fluid.mt-5.p-lg-5.p-md-5.p-sm-1.bg-white
+        .row
+            .col-sm-12.col-md-12.col-lg-4
+                //- โปรไฟล์
+                #profile.mb-2
+                    include component/user-info
+                //- menu
+                #menu
+                    include component/menu
+
+            .col-sm-12.col-md-12.col-lg-8
+                .card.shadow-sm
+                    .card-header.d-flex.justify-content-center
+                        h5 เปลี่ยนรูปโปรไฟล์
+                    .card-body
+                        .custom-file
+                            form(action="" method="post" enctype="multipart/form-data")
+                                input#file-input(type="file" name="avatar" required="").custom-file-input
+                                label(for="file-input").custom-file-label เลือกรูปภาพ...
+                                img#previewImg(src="#" alt="" srcset="" heigth="20px").img-thumbnail.img-fluid
+                                input(type="submit" value="upload").btn.btn-block.btn-dark
+                                
+
+block script
+    script(src="/javascripts/th.js")
+    script.
+        function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#previewImg').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+        }
+        $("#file-input").change(function() {
+            readURL(this);
+        });
+    if success
+        - var text = "เปลี่ยนรูปโปรไฟล์สำเร็จ"
+        include ../component/sweetmodal
+    if err 
+        - var text = err
+        include ../component/sweetmodal_error
