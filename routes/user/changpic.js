@@ -65,8 +65,9 @@ router.post('/', (req, res, next) => {
                         let filename = req.session.random_user_id + path.extname(req.file.originalname);
                         let userid = req.session.userid;
                         let sql = 'UPDATE user SET picture_path = ? WHERE user.id = ?';
-                        con.query(sql, [filename, userid], (err) => {
+                        con.query(sql, [filename, userid], (err, rows2) => {
                             if (err) throw err;
+                            // console.log(rows2);
                             let title = "เปลี่ยนรูปโปรไฟล์"
                             res.render('user/changepic', { title: title, user_data: rows, success: true })
                             res.end();

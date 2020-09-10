@@ -18,12 +18,6 @@ router.get('/', (req, res, next) => {
         con.query(sql, userid, (err, rows) => {
             if (err) throw err;
             let title = "ประกาศงาน"
-            let firstname = rows[0].firstname;
-            let lastname = rows[0].lastname;
-            let phone_number = rows[0].phone_number;
-            let age = rows[0].age;
-            let id_card = rows[0].id_card;
-
             //  get provinces information
             var sql_province = 'select * from provinces';
             con.query(sql_province, (err, province_data) => {
@@ -32,11 +26,7 @@ router.get('/', (req, res, next) => {
                     title: title,
                     loggedin: true,
                     card_data: rows,
-                    firstname: firstname,
-                    lastname: lastname,
-                    phone_number: phone_number,
-                    age: age,
-                    id_card: id_card,
+                    user_data : rows,
                     province_data: province_data
                 });
             });
