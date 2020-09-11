@@ -19,6 +19,7 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.4",
     "pug": "2.0.0-beta11",
+    "sharp": "^0.26.0",
     "vanilla-lazyload": "^17.1.2"
   }
 }
