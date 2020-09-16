@@ -52,12 +52,11 @@ router.post('/', (req, res) => {
     }
 });
 
-router.get('/a', (req, res, next) => {
-    req.session.userid = 4;
-    req.session.loggedin = true;
-    req.session.random_user_id = "c13c20a7dbd023f6a4962a3a3c60d916c52abe695ae87fabe5dc0bda85090225"
-    res.redirect('/user');
-
-});
+// router.get('/a', (req, res, next) => {
+//     req.session.userid = 4;
+//     req.session.loggedin = true;
+//     req.session.random_user_id = "c13c20a7dbd023f6a4962a3a3c60d916c52abe695ae87fabe5dc0bda85090225"
+//     res.redirect('/user');
+// });
 
 module.exports = router;
