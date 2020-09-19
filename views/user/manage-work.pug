@@ -1,0 +1,29 @@
+
+extends layout
+
+block content
+    .container-fluid.mt-5.p-lg-5.p-md-5.p-sm-1
+        .row
+            .col-sm-12.col-md-12.col-lg-4
+                //- โปรไฟล์
+                #profile.mb-2
+                    include component/user-info
+                //- menu
+                #menu
+                    include component/menu
+
+            .col-sm-12.col-md-12.col-lg-8
+                .card.shadow-sm
+                    .card-header.d-flex.justify-content-center
+                        h5 สถานะงานที่คุณเคยประกาศ
+                    .card-body
+                        if card_data
+                            h5 
+                                |ทั้งหมด 
+                                = card_data.length
+                                | งาน
+                            each val in card_data
+                                include ../work/data
+                                include ../work/work-card
+                        else
+                            p คุณยังไม่เคยประกาศงาน 
