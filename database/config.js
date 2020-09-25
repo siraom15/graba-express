@@ -2,12 +2,12 @@ const mysql = require('mysql');
 
 var config;
 config = {
-  mysql_pool_p: mysql.createPool({
-    host : 'localhost',
-    user : 'root',
-    password : 'root',
-    database : 'graba-express'
-  }),
+  // mysql_pool_p: mysql.createPool({
+  //   host : 'localhost',
+  //   user : 'root',
+  //   password : 'root',
+  //   database : 'graba-express'
+  // }),
   mysql_pool : mysql.createPool({
     host : 'remotemysql.com',
     port : 3306,
