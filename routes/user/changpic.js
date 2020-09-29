@@ -57,39 +57,47 @@ router.post('/', (req, res, next) => {
             if (err) console.log(err);
             else {
                 upload(req, res, (err) => {
-                    filename = req.session.random_user_id + path.extname(req.file.originalname);
-                    if (err) {
-                        let title = "เปลี่ยนรูปโปรไฟล์"
-                        res.render('user/changepic', { title: title, user_data: rows, err: "นามสกุลไฟล์ไม่ถูกต้อง กรุณาอัปโหลดรูปภาพใหม่" });
-                        res.end();
+                    console.log(req.file);
+                    try {
+                        filename = req.session.random_user_id + path.extname(req.file.originalname);
+                        if (err) {
+                            let title = "เปลี่ยนรูปโปรไฟล์"
+                            res.render('user/changepic', { title: title, user_data: rows, err: "นามสกุลไฟล์ไม่ถูกต้อง กรุณาอัปโหลดรูปภาพใหม่" });
+                            res.end();
+                        }
+                        else {
+                            // let resize image from temp to upload by sharp
+                            let location_temp = './public/images/temp/' + filename;
+                            let location_target = './public/images/upload/' + filename;
+                            sharp(location_temp)
+                                .resize(300, 300)
+                                .toFile(location_target, function (err) {
+                                    if (err) {
+                                        console.log(err);
+                                        res.redirect('/user');
+                                    }
+                                    else {
+                                        let sql = 'UPDATE user SET picture_path = ? WHERE user.id = ?';
+                                        con.query(sql, [filename, userid], (err, rows2) => {
+                                            if (err) {
+                                                console.log(err);
+                                                res.redirect('/user');
+                                            }
+                                            else {
+                                                let title = "เปลี่ยนรูปโปรไฟล์"
+                                                res.render('user/changepic', { title: title, user_data: rows, success: true })
+                                                res.end();
+                                            }
+                                        });
+                                    }
+                                });
+                        }
                     }
-                    else {
-                        // let resize image from temp to upload by sharp
-                        let location_temp = './public/images/temp/' + filename;
-                        let location_target = './public/images/upload/' + filename;
-                        sharp(location_temp)
-                            .resize(300, 300)
-                            .toFile(location_target, function (err) {
-                                if (err) {
-                                    console.log(err);
-                                    res.redirect('/user');
-                                }
-                                else {
-                                    let sql = 'UPDATE user SET picture_path = ? WHERE user.id = ?';
-                                    con.query(sql, [filename, userid], (err, rows2) => {
-                                        if (err) {
-                                            console.log(err);
-                                            res.redirect('/user');
-                                        }
-                                        else {
-                                            let title = "เปลี่ยนรูปโปรไฟล์"
-                                            res.render('user/changepic', { title: title, user_data: rows, success: true })
-                                            res.end();
-                                        }
-                                    });
-                                }
-                            });
+                    catch(err){
+                        if(err) console.log(err);
+                        res.redirect('/');
                     }
+                    
                 });
 
             }
