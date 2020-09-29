@@ -41,7 +41,7 @@ Graba Express is currently extended with the following plugins. Instructions on 
 | Cryto | Encrypt Data |
 
 ### Docker
-Coming Soon .
+- Supported
 
 ### Todos
 
