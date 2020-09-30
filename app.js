@@ -54,6 +54,9 @@ app.use('/user/change_picture', changePicUser);
 var manageWorkUser = require('./routes/user/manage-work');
 app.use('/user/manage-work', manageWorkUser);
 
+var editAnnounceUser = require('./routes/user/edit-announce');
+app.use('/user/edit-announce', editAnnounceUser);
+
 // work zone
 var workRouter = require('./routes/work/index');
 app.use('/work', workRouter);
