@@ -1,6 +1,7 @@
 
 extends layout
-
+block css
+    link(rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css")
 block content
     .container-fluid.mt-5.p-lg-5.p-md-5.p-sm-1
         .row
@@ -17,13 +18,66 @@ block content
                     .card-header.d-flex.justify-content-center
                         h5 สถานะงานที่คุณเคยประกาศ
                     .card-body
-                        if card_data
-                            h5 
-                                |ทั้งหมด 
-                                = card_data.length
-                                | งาน
-                            each val in card_data
-                                include ../work/data
-                                include ../work/work-card
-                        else
-                            p คุณยังไม่เคยประกาศงาน 
+                        table#dataTable.table-responsive.table.table-sm.display.dataTable.no-footer
+                            thead
+                                tr
+                                    th #
+                                    th วันที่ประกาศ
+                                    th สินค้า
+                                    th เริ่มต้น
+                                    th จุดหมาย
+                                    th วันที่ทำงาน
+                                    th สถานะ
+                                    th แก้ไข
+                                    th ลบงาน
+                            tbody
+                                - console.log(card_data)
+                                if card_data 
+                                    each val,index in card_data
+                                        tr  
+                                            //- index
+                                            td= index+1
+                                            //- วันที่ประกาศ
+                                            td= moment(val.date_of_announce).format('llll')
+                                            //- สินค้า
+                                            td= val.goods
+                                            //- เริ่มต้น
+                                            td= val.district_start_name
+                                            //- จุดหมาย
+                                            td= val.district_destination_name
+                                            //- วันที่ทำงาน
+                                            td= moment(val.date_of_work).format('llll')
+                                            //- สถานะงาน
+                                            td
+                                                if val.status == 1
+                                                    span.badge.badge-info ปิดงานแล้ว
+                                                else 
+                                                    span.badge.badge-info เปิดรับงาน
+
+                                            //- แก้ไข
+                                            td 
+                                                a(href="").btn.btn-success 
+                                                    i.fas.fa-edit 
+                                                    |  แก้ไข
+                                            //- ลบ
+                                            td
+                                                a(href="").btn.btn-danger 
+                                                    i.fas.fa-trash 
+                                                    |  ลบ
+
+
+block script
+    script.
+        $(document).ready( function () {
+            $('#dataTable').DataTable({
+                responsive: true,
+                "language": {
+                    "lengthMenu": "แสดง _MENU_ ต่อหน้า",
+                    "zeroRecords": "ไม่พบข้อมูล",
+                    "info": "กำลังแสดงหน้า _PAGE_ จาก _PAGES_",
+                    "infoEmpty": "ไม่มีข้อมูล",
+                    "infoFiltered": "(filtered from _MAX_ total records)"
+                }
+            });
+        } );
+    script(src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js")
