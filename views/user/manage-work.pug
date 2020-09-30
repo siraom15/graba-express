@@ -31,7 +31,6 @@ block content
                                     th แก้ไข
                                     th ลบงาน
                             tbody
-                                - console.log(card_data)
                                 if card_data 
                                     each val,index in card_data
                                         tr  
@@ -56,7 +55,7 @@ block content
 
                                             //- แก้ไข
                                             td 
-                                                a(href="").btn.btn-success 
+                                                a(href="/user/edit-announce/"+val.random_work_id).btn.btn-success 
                                                     i.fas.fa-edit 
                                                     |  แก้ไข
                                             //- ลบ

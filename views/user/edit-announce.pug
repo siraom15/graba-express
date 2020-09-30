@@ -1,0 +1,88 @@
+
+extends layout
+
+block content
+    .container-fluid.mt-5.p-lg-5.p-md-5.p-sm-1.bg-white
+        .row
+            //- .col-sm-12.col-md-12.col-lg-4
+            //- โปรไฟล์
+                #profile.mb-2
+                    include component/user-info
+                //- menu
+                #menu
+                    include component/menu
+
+            .col-sm-12.col-md-12.col-lg-8
+                .card.shadow-sm
+                    .card-header.d-flex.justify-content-center
+                        h5 แก้ไขประกาศ
+                    .card-body
+                        form(action="" method="post" novalidate="")
+                            h4 เส้นทาง
+
+                            .row.p-3
+                                .col
+                                    label(for="").h5 รับของ (เริ่มต้น)
+                                        small.text-danger *
+                                    .d-flex.justify-content-between
+                                        input(type="text" name="" disabled="" value ).form-control
+                                        input(type="text" name="" disabled="" value).form-control
+                                        input(type="text" name="" disabled="" value= ).form-control
+                                    //- include component/province-dropdown
+                            .row.p-3   
+                                .col
+                                    label(for="").h5 ส่งของ (ปลายทาง)
+                                        small.text-danger *
+                                    .d-flex.justify-content-between
+                                        input(type="text" name="" disabled="" ).form-control
+                                        input(type="text" name="" disabled="" ).form-control
+                                        input(type="text" name="" disabled="" ).form-control
+                                    //- include component/province-dropdown
+
+                            //- small ข้อมูลด้านล่างจะกรอกหรือไม่กรอกก็ได้ 
+                            //สินค้า
+                            .row.p-3
+                                .col.d-flex
+                                    h5.m-2
+                                        i.fas.fa-shopping-cart.text-warning
+                                    input(type="text" placeholder="สินค้า *" required="true" name="goods" value=work_data[0].goods).form-control
+                                    .invalid-feedback ใส่ชื่อสินค้า
+                            //น้ำหนักสินค้า
+                            .row.p-3
+                                .col.d-flex
+                                    h5.m-2
+                                        i.fas.fa-weight 
+                                    input(type="text" placeholder="น้ำหนักสินค้า" name="weight" value=work_data[0].weight).form-control
+                            //เรทราคา
+                            .row.p-3
+                                .col.d-flex
+                                    h5.m-2
+                                        i.fas.fa-money-bill-wave-alt.text-success
+                                    input(type="text" placeholder="เรทราคา/ราคา" name="rate_of_price" value=work_data[0].rateOfPrice).form-control
+                            // วันที่ทำงาน
+                            .row.p-3
+                                .col.d-flex
+                                    h5.m-2.d-flex 
+                                        i.fas.fa-calendar-day.text-pink 
+                                    - let dateOfWork = work_data[0].date_of_work.toISOString().slice(0,16);
+                                    input(type="datetime-local" placeholder="วันที่ทำงาน" name="date_of_work" required="true" value=dateOfWork disabled).form-control
+                            //ข้อมูลเพิ่มเติม
+                            .row.p-3
+                                .col.d-flex
+                                    h5.m-2
+                                        i.fas.fa-info-circle.text-primary
+                                    textarea(cols="30" id="infomation" rows="10" maxlength="1000" placeholder="ข้อมูลเพิ่มเติม" name="information" ).form-control= work_data[0].information
+                            .row.p-3
+                                .col.d-flex
+                                    button(type="submit" name="submit" id="submitBtn").btn.btn-block.btn-dark 
+                                        i.fas.fa-bullhorn
+                                        |  ประกาศงาน  
+                                        i.fas.fa-bullhorn
+block script
+    script(src="/javascripts/th.js")
+    //- script.
+        $("#submitBtn").click(()=>{
+            $.sweetModal.confirm('ยืนยันการประกาศ', function() {
+                //- $.sweetModal('Thanks for confirming!');
+            });
+        })
