@@ -4,8 +4,8 @@ extends layout
 block content
     .container-fluid.mt-5.p-lg-5.p-md-5.p-sm-1.bg-white
         .row
-            //- .col-sm-12.col-md-12.col-lg-4
-            //- โปรไฟล์
+            .col-sm-12.col-md-12.col-lg-4
+                //- โปรไฟล์
                 #profile.mb-2
                     include component/user-info
                 //- menu
@@ -17,6 +17,9 @@ block content
                     .card-header.d-flex.justify-content-center
                         h5 แก้ไขประกาศ
                     .card-body
+                        a(href="/user/manage-work").mb-2.btn.shadow-sm
+                            i.fas.fa-arrow-left
+                            |  กลับหน้าแรก
                         form(action="" method="post" novalidate="")
                             h4 เส้นทาง
 
@@ -25,18 +28,18 @@ block content
                                     label(for="").h5 รับของ (เริ่มต้น)
                                         small.text-danger *
                                     .d-flex.justify-content-between
-                                        input(type="text" name="" disabled="" value ).form-control
-                                        input(type="text" name="" disabled="" value).form-control
-                                        input(type="text" name="" disabled="" value= ).form-control
+                                        input(type="text" name="" disabled="" value=work_data[0].province_start_name).form-control
+                                        input(type="text" name="" disabled="" value=work_data[0].amphure_start_name).form-control
+                                        input(type="text" name="" disabled="" value=work_data[0].district_start_name).form-control
                                     //- include component/province-dropdown
                             .row.p-3   
                                 .col
                                     label(for="").h5 ส่งของ (ปลายทาง)
                                         small.text-danger *
                                     .d-flex.justify-content-between
-                                        input(type="text" name="" disabled="" ).form-control
-                                        input(type="text" name="" disabled="" ).form-control
-                                        input(type="text" name="" disabled="" ).form-control
+                                        input(type="text" name="" disabled="" value=work_data[0].province_destination_name).form-control
+                                        input(type="text" name="" disabled="" value=work_data[0].amphure_destination_name).form-control
+                                        input(type="text" name="" disabled="" value=work_data[0].district_destination_name).form-control
                                     //- include component/province-dropdown
 
                             //- small ข้อมูลด้านล่างจะกรอกหรือไม่กรอกก็ได้ 
@@ -76,7 +79,7 @@ block content
                                 .col.d-flex
                                     button(type="submit" name="submit" id="submitBtn").btn.btn-block.btn-dark 
                                         i.fas.fa-bullhorn
-                                        |  ประกาศงาน  
+                                        |  ยืนยันการแก้ไขประกาศ  
                                         i.fas.fa-bullhorn
 block script
     script(src="/javascripts/th.js")
