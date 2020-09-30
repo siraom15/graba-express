@@ -95,7 +95,9 @@ router.post('/', (req, res, next) => {
                     }
                     catch(err){
                         if(err) console.log(err);
-                        res.redirect('/');
+                        let title = "เปลี่ยนรูปโปรไฟล์"
+                        res.render('user/changepic', { title: title, user_data: rows, err: "นามสกุลไฟล์ไม่ถูกต้อง กรุณาอัปโหลดรูปภาพใหม่" });
+                        res.end();
                     }
                     
                 });
