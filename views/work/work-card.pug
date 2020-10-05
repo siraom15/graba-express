@@ -1,24 +1,26 @@
 .row.mb-2
     .col-12
         .card.shadow-sm
-            .card-header.d-flex.justify-content-between.bg-white
-                a(href="/user/info/"+random_user_id target="_blank")#user.d-flex
-                    img(src=imgSrc, alt="" srcset="" height="80px").rounded-circle
-                    p.text-inline= firstname + " " + lastname
-                #contact
-                    if status==1 
-                        h5
-                            span.badge.badge-success มีผู้รับงานแล้ว
-                    else
-                        small ประกาศเมื่อ 
-                            = dateOfAnnounce
-                        h5
-                            span.badge.badge-info เปิดรับงาน
-                        if !loggedin
-                            p
-                                a(href="/work/info/"+random_work_id target="_blank").text-primary
-                                    | ติดต่องาน 
-                                    i.fas.fa-phone
+            .card-header.bg-white
+                .row
+                    .col-sm-12.col-md-6.col-lg-9.mx-auto
+                        a(href="/user/info/"+random_user_id target="_blank")#user.d-flex
+                            img(src=imgSrc, alt="" srcset="" height="80px").rounded-circle
+                            p.text-inline= firstname + " " + lastname
+                    #contact.col
+                        if status==1 
+                            h5
+                                span.badge.badge-success มีผู้รับงานแล้ว
+                        else
+                            small ประกาศเมื่อ 
+                                = dateOfAnnounce
+                            h5
+                                span.badge.badge-info เปิดรับงาน
+                            if !loggedin
+                                p
+                                    a(href="/work/info/"+random_work_id target="_blank").text-primary
+                                        | ติดต่องาน 
+                                        i.fas.fa-phone
             .card-body
                 //เส้นทาง
                 .row
