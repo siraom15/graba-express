@@ -4,7 +4,7 @@ block navbar
 block content
     each val in card_data
         include ./data
-        .container-fluid.mt-5.p-5.bg-white
+        .container-fluid.mt-5.p-4.bg-white
             if inserted_status
                 - var text = "ประกาศงานสำเร็จ"
                 include ../component/sweetmodal
@@ -12,11 +12,14 @@ block content
                 i.fas.fa-arrow-left
                 |  ย้อนกลับ
             .card.shadow-sm
-                .card-header.d-flex.justify-content-between
-                    a(href="/user/info/"+random_user_id target="_blank").d-flex
-                        img(src=imgSrc, alt="" srcset="" height="40px").rounded-circle
-                        p.text-inline= firstname + " " + lastname
-                    p= dateOfAnnounce
+                .card-header
+                    .row
+                        .col-sm-12.col-md-6.col-lg-9.mx-auto
+                            a(href="/user/info/"+random_user_id target="_blank").d-flex
+                                img(src=imgSrc, alt="" srcset="" height="40px").rounded-circle
+                                p.text-inline= firstname + " " + lastname
+                        .col
+                            p= dateOfAnnounce
                 .card-body
                     //เส้นทาง
                     .row

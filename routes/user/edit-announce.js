@@ -56,7 +56,7 @@ router.get('/:random_work_id', function (req, res, next) {
                             title: title,
                             loggedin: true,
                             user_data: rows,
-                            work_data: rows2
+                            work_data: rows2,
                         });
                 }
                 // else we render with no data
@@ -68,5 +68,29 @@ router.get('/:random_work_id', function (req, res, next) {
         });
     }
 });
+
+router.post('/:random_work_id', (req, res, next) => {
+    if (!req.session.loggedin) {
+        res.redirect('/user/login');
+    } else {
+        let random_work_id = req.params.random_work_id;
+        // defined sql code that select all data of work
+        let data = {
+            userid: req.session.userid,
+            goods: req.body.goods,
+            weight: req.body.weight,
+            rate_of_price: req.body.rate_of_price,
+            information: req.body.information,
+        }
+        var sql = `
+                UPDATE work SET
+                goods = ? , weight = ?, rateOfPrice = ?, information = ?
+                WHERE random_work_id = ? AND user_id = ?`;
+        con.query(sql, [data.goods, data.weight, data.rate_of_price, data.information, random_work_id, data.userid], (err, rows2) => {
+            if (err) console.log(err);
+            res.redirect('/user/edit-announce/' + random_work_id);
+        });
+    }
+})
 
 module.exports = router;

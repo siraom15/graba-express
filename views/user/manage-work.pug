@@ -60,8 +60,8 @@ block content
                                                     |  แก้ไข
                                             //- ลบ
                                             td
-                                                a(href="").btn.btn-danger 
-                                                    i.fas.fa-trash 
+                                                btn(onclick="delWork('"+val.random_work_id+"');").btn.btn-danger
+                                                    i.fas.fa-trash
                                                     |  ลบ
 
 
@@ -80,3 +80,13 @@ block script
             });
         } );
     script(src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js")
+    script.
+        function delWork(n){
+            $.sweetModal.confirm('ยืนยันการลบ', 'ยืนยันการลบ?', function() {
+            $.sweetModal('Yes');
+            }, function() {
+                $.sweetModal('ยกเลิกการลบ!');
+            });
+        }
+
+
