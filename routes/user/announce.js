@@ -26,7 +26,7 @@ router.get('/', (req, res, next) => {
                     title: title,
                     loggedin: true,
                     card_data: rows,
-                    user_data : rows,
+                    user_data: rows,
                     province_data: province_data
                 });
             });
